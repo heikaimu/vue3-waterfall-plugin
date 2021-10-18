@@ -35,9 +35,9 @@
   },
   "respository": {
     "type": "git",
-    "url": "git+https://github.com/xxx.git"
+    "url": "https://github.com/heikaimu/vue3-waterfall-plugin"
   },
   "bugs": {
-    "url": "https://github.com/vue.js/vue/issues"
+    "url": "https://github.com/heikaimu/vue3-waterfall-plugin/issues"
   }
 }
