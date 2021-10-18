@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-18 16:22:04
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2021-10-18 16:52:47
+ * @LastEditTime: 2021-10-18 16:55:39
 -->
 # Vue3 瀑布流组件
 ### vue3 waterfall plugin, support PC and mobile, support animate.css. vue3 瀑布流插件，支持PC和移动端，支持animate的所有动画效果 
@@ -17,7 +17,17 @@
 
 下载项目
 
-执行 yarn 或者 npm i
+```
+yarn
+```
+or
+```
+npm i
+```
+
+```
+npm run dev
+```
 
 ### 安装
 
@@ -91,9 +101,9 @@ import "vue-waterfall-plugin-next/dist/style.css";
 | imgSelector      | String  | src       | 图片字段选择器，主要用与监控图片加载完成触发重新排版，如果层级较深，使用 xxx.xxx.xxx 方式 |
 | width            | Number  | 200       | 卡片在PC上的宽度 |
 | breakpoints      | Object  |breakpoints| 自定义行显示个数，主要用于对移动端的适配 |
-| gutter           | Number  | 6         | 卡片之间的间隙 |
+| gutter           | Number  | 10        | 卡片之间的间隙 |
 | hasAroundGutter  | Boolean | true      | 容器四周是否有gutter边距 |
-| animationEffect  | String  | fadeIn    | 卡片入场动画，默认只有fadeIn，支持引入使用animation.css的动画效果 |
+| animationEffect  | String  | fadeIn    | 卡片入场动画，默认只有fadeIn，引入animation.css后可使用其他动画 |
 | animationDuration| Number  | 1000      | 动画执行时间（单位毫秒） |
 | animationDelay   | Number  | 300       | 动画延迟（单位毫秒） |
 | backgroundColor  | String  | #fff      | 背景颜色 |

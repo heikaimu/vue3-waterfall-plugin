@@ -4,13 +4,13 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-18 11:18:04
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2021-10-18 16:08:44
+ * @LastEditTime: 2021-10-18 16:58:01
 -->
 <template>
   <div class="github">
     <a
       class="Header-link"
-      href="https://github.com/heikaimu/vue-waterfall-plugin"
+      href="https://github.com/heikaimu/vue3-waterfall-plugin"
       data-hotkey="g d"
       aria-label="Homepage "
       data-ga-click="Header, go to dashboard, icon:logo"
