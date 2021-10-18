@@ -1,0 +1,42 @@
+{
+  "name": "vue-waterfall-plugin-next",
+  "version": "1.0.3",
+  "author": "Yaowen Liu <576079353@qq.com>",
+  "files": [
+    "dist"
+  ],
+  "module": "./dist/vue-waterfall-plugin-next.es.js",
+  "main": "./dist/vue-waterfall-plugin-next.umd.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-waterfall-plugin-next.es.js",
+      "require": "./dist/vue-waterfall-plugin-next.umd.js"
+    },
+    "./dist/style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "element-plus": "^1.1.0-beta.20",
+    "vue": "^3.0.5",
+    "vue-waterfall-plugin-next": "^1.0.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.2.5",
+    "@vue/compiler-sfc": "^3.0.5",
+    "vite": "^2.4.2"
+  },
+  "respository": {
+    "type": "git",
+    "url": "git+https://github.com/xxx.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vue.js/vue/issues"
+  }
+}
