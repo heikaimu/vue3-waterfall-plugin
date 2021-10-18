@@ -6,6 +6,7 @@ import path from 'path'
 export default defineConfig({
   plugins: [vue()],
   build: {
+    // assetsDir: './',
     lib: {
       entry: path.resolve(__dirname, 'src/index.js'),
       name: 'VueWaterfallPluginNext',
