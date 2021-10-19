@@ -26,7 +26,7 @@
   "dependencies": {
     "element-plus": "^1.1.0-beta.20",
     "vue": "^3.0.5",
-    "vue-waterfall-plugin-next": "^1.0.3"
+    "vue-waterfall-plugin-next": "^1.0.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.2.5",
