@@ -1,6 +1,6 @@
 {
   "name": "vue-waterfall-plugin-next",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Yaowen Liu <576079353@qq.com>",
   "files": [
     "dist"
