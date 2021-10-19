@@ -19,8 +19,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "build-preview": "vite build --base=/vue3-waterfall-plugin/preview",
+    "build-lib": "vite build --mode=lib",
+    "build-preview": "vite build --mode=preview",
     "serve": "vite preview"
   },
   "dependencies": {
