@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-18 16:22:04
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2021-10-18 17:55:07
+ * @LastEditTime: 2021-10-19 17:00:25
 -->
 # Vue3 瀑布流组件
 ### vue3 waterfall plugin, support PC and mobile, support animate.css. vue3 瀑布流插件，支持PC和移动端，支持animate的所有动画效果 
