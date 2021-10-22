@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 10:20:21
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2021-10-18 15:01:19
+ * @LastEditTime: 2021-10-22 15:26:16
 -->
 <template>
   <div
@@ -112,8 +112,8 @@ export default defineComponent({
     const waterfallWrapperWidth = ref(0);
 
     function setWaterfallWrapperWidth() {
-      waterfallWrapperWidth.value =
-        waterfallWrapper.value.getBoundingClientRect().width;
+      const wrapperEle = waterfallWrapper.value.getBoundingClientRect();
+      waterfallWrapperWidth.value = wrapperEle ? wrapperEle.width : 0;
     }
 
     // set item width

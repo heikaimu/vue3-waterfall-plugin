@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 10:20:21
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2021-10-18 16:13:38
+ * @LastEditTime: 2021-10-22 15:29:11
 -->
 <template>
   <div class="example">
@@ -72,6 +72,7 @@ import "vue-waterfall-plugin-next/dist/style.css";
 
 import ControllerForm from "./Form.vue";
 import Github from "./Github.vue";
+
 import { reactive, toRefs, ref, onMounted, computed } from "vue";
 import { getList } from "../api";
 
