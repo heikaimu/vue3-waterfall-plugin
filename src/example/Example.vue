@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 10:20:21
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-09 17:23:52
+ * @LastEditTime: 2022-03-09 18:25:01
 -->
 <template>
   <div class="example">
@@ -12,6 +12,7 @@
     <div class="example__content--left">
       <Waterfall
         :list="list"
+        :rowKey="options.rowKey"
         :gutter="options.gutter"
         :hasAroundGutter="options.hasAroundGutter"
         :width="options.width"
@@ -24,10 +25,23 @@
         :lazyload="options.lazyload"
         :loadProps="options.loadProps"
       >
-        <template #item="{ item, url }">
-          <div class="card" @click="handleClick(item)">
+        <template #item="{ item, url, index }">
+          <div class="card-box" @click="handlePreview(item, url)">
             <LazyImg :url="url" />
-            <p class="text">{{ item.name }}</p>
+            <div class="card-info">
+              <p class="card-info__title">{{ item.name }}</p>
+            </div>
+            <div class="card-buttons">
+              <el-button size="mini" @click.stop="handleStar(item)" plain type="primary" icon="el-icon-star-on"
+                >收藏</el-button
+              >
+              <el-button size="mini" @click.stop="handleDelete(item, index)" plain type="danger" icon="el-icon-delete"
+                >删除</el-button
+              >
+            </div>
+            <div class="card-star" v-if="item.star">
+              <i class="el-icon-star-on"></i>
+            </div>
           </div>
         </template>
       </Waterfall>
@@ -50,6 +64,11 @@
 
       <Github />
     </div>
+
+    <!-- 大图预览 -->
+    <el-dialog v-model="previewVisible" :title="previewTitle" width="800px">
+      <img style="width:100%" :src="previewURL" alt="" srcset="" />
+    </el-dialog>
   </div>
 </template>
 
@@ -58,8 +77,8 @@
 // import { Waterfall, LazyImg } from '../index.js';
 
 // npm package test
-import { Waterfall, LazyImg } from "vue-waterfall-plugin-next";
-import "vue-waterfall-plugin-next/dist/style.css";
+import { Waterfall, LazyImg } from 'vue-waterfall-plugin-next';
+import 'vue-waterfall-plugin-next/dist/style.css';
 
 import ControllerForm from './Form.vue';
 import Github from './Github.vue';
@@ -87,9 +106,30 @@ function useSlideBar() {
   };
 }
 
+function usePreview() {
+  const previewVisible = ref(false);
+  const previewTitle = ref('');
+  const previewURL = ref('');
+
+  const handlePreview = (item, url) => {
+    previewTitle.value = item.name;
+    previewURL.value = url;
+    previewVisible.value = true;
+  };
+
+  return {
+    previewVisible,
+    previewTitle,
+    previewURL,
+    handlePreview,
+  };
+}
+
 function useWaterfall() {
   const list = reactive([]);
   const options = reactive({
+    // 唯一key值
+    rowKey: 'id',
     // 卡片之间的间隙
     gutter: 10,
     // 是否有周围的gutter
@@ -139,16 +179,10 @@ function useWaterfall() {
     list.push(...getNoSizeImages(30));
   }
 
-  // 点击
-  function handleClick(item) {
-    alert(item.name);
-  }
-
   return {
     list,
     options,
     handleLoadMore,
-    handleClick,
   };
 }
 
@@ -162,19 +196,36 @@ export default {
 
   setup() {
     // 列表
-    const { list, options, handleLoadMore, handleClick } = useWaterfall();
+    const { list, options, handleLoadMore } = useWaterfall();
 
     // 侧边栏控制
     const { isOpen, controllerWidth, handleToggleController } = useSlideBar();
+
+    const { previewVisible, previewTitle, previewURL, handlePreview } = usePreview();
+
+    // 编辑
+    function handleStar(item) {
+      item.star = !item.star;
+    }
+
+    // 删除
+    function handleDelete(item, index) {
+      this.list.splice(index, 1);
+    }
 
     return {
       list,
       options,
       handleLoadMore,
-      handleClick,
       isOpen,
       controllerWidth,
       handleToggleController,
+      previewVisible,
+      previewTitle,
+      previewURL,
+      handlePreview,
+      handleStar,
+      handleDelete,
     };
   },
 };
@@ -245,16 +296,39 @@ export default {
 }
 
 /* card */
-.card {
-  background-color: #f2f2f2f2;
+.card-box {
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  position: relative;
+  cursor: pointer;
 }
 
-.card .text {
+.card-star {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.card-star i {
+  font-size: 30px;
+  color: gold;
+}
+
+.card-info {
   padding: 10px;
-  text-align: center;
-  font-size: 14px;
-  color: #666666;
-  background-color: #ffffff;
+}
+
+.card-info__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.card-buttons {
+  padding: 10px;
+  text-align: right;
+  border-top: 1px solid #e7e7e7;
 }
 
 .add-wrapper {

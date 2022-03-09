@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-18 16:22:04
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-09 17:22:03
+ * @LastEditTime: 2022-03-09 18:12:02
 -->
 
 # Vue3 瀑布流组件
@@ -53,12 +53,13 @@ data: {
 }
 ```
 
+`item` 所有数据, `url` 图片资源, `index` 卡片索引 
 ```html
 <Waterfall :list="list">
-  <template #item="{ item, url }">
-    <div class="card" @click="handleClickCard(item)">
+  <template #item="{ item, url, index }">
+    <div class="card">
       <LazyImg :url="url" />
-      <p class="text">{{item}} 包含当前卡片所有信息 {{url}} 当前卡片的图片资源</p>
+      <p class="text">这是内容</p>
     </div>
   </template>
 </Waterfall>
@@ -68,6 +69,7 @@ data: {
 | Name              | Type    | Default     | Description                                                                               |
 | ----------------- | ------- | ----------- | ----------------------------------------------------------------------------------------- |
 | list              | Array   | []          | 列表数据                                                                                  |
+| rowKey            | String  | id          | 数据唯一的字段，比如列表里面的id, 如果要删除卡片，该字段为必填                                     |
 | imgSelector       | String  | src         | 图片字段选择器，主要用与监控图片加载完成触发重新排版，如果层级较深，使用 xxx.xxx.xxx 方式 |
 | width             | Number  | 200         | 卡片在 PC 上的宽度                                                                        |
 | breakpoints       | Object  | breakpoints | 自定义行显示个数，主要用于对移动端的适配                                                  |

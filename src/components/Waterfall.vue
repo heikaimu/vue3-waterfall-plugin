@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 10:20:21
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-09 17:06:09
+ * @LastEditTime: 2022-03-09 17:56:59
 -->
 <template>
   <div
@@ -17,11 +17,11 @@
       class="waterfall-item"
       v-for="(item, index) in list"
       :ref="setItemRef"
-      :key="index"
+      :key="item[rowKey] || index"
       :style="{ width: `${itemWidth}px` }"
     >
       <div class="waterfall-card">
-        <slot name="item" :item="item" :url="getRenderURL(item)" />
+        <slot name="item" :item="item" :index="index" :url="getRenderURL(item)" />
       </div>
     </div>
   </div>
@@ -38,6 +38,10 @@ export default defineComponent({
     list: {
       type: Array,
       default: () => [],
+    },
+    rowKey: {
+      type: String,
+      default: 'id'
     },
     imgSelector: {
       type: String,
@@ -184,6 +188,7 @@ export default defineComponent({
   position: absolute;
   left: 0;
   top: 0;
+  transition: .3s;
   /* 初始位置设置到屏幕以外，避免懒加载失败 */
   transform: translate3d(0, 3000px, 0);
   visibility: hidden;
