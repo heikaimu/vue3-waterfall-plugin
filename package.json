@@ -1,12 +1,10 @@
 {
   "name": "vue-waterfall-plugin-next",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "author": "Yaowen Liu <576079353@qq.com>",
   "files": [
     "dist"
   ],
-  "module": "./dist/vue-waterfall-plugin-next.es.js",
-  "main": "./dist/vue-waterfall-plugin-next.umd.js",
   "exports": {
     ".": {
       "import": "./dist/vue-waterfall-plugin-next.es.js",
@@ -26,7 +24,7 @@
   "dependencies": {
     "element-plus": "^1.1.0-beta.20",
     "vue": "^3.0.5",
-    "vue-waterfall-plugin-next": "^1.0.5"
+    "vue-waterfall-plugin-next": "^1.1.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.2.5",

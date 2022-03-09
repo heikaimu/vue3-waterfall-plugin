@@ -4,12 +4,13 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 10:20:21
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2021-10-22 15:29:11
+ * @LastEditTime: 2022-03-09 17:23:52
 -->
 <template>
   <div class="example">
+    <!-- 左侧列表 -->
     <div class="example__content--left">
-      <VueWaterfallPluginNext
+      <Waterfall
         :list="list"
         :gutter="options.gutter"
         :hasAroundGutter="options.hasAroundGutter"
@@ -20,139 +21,160 @@
         :animationEffect="options.animationEffect"
         :animationDuration="options.animationDuration"
         :animationDelay="options.animationDelay"
+        :lazyload="options.lazyload"
+        :loadProps="options.loadProps"
       >
-        <template #item="{ item, url, itemWidth }">
-          <div class="card" @click="handleClickCard(item)">
-            <img
-              :src="url"
-              alt=""
-              :width="itemWidth"
-              :height="(itemWidth * item.height) / item.width"
-              :style="{ backgroundColor: item.backgroundColor }"
-            />
+        <template #item="{ item, url }">
+          <div class="card" @click="handleClick(item)">
+            <LazyImg :url="url" />
             <p class="text">{{ item.name }}</p>
           </div>
         </template>
-      </VueWaterfallPluginNext>
+      </Waterfall>
+
       <div class="add-wrapper">
-        <p class="text" @click="handleAdd">加载更多</p>
+        <p class="text" @click="handleLoadMore">加载更多</p>
       </div>
     </div>
 
+    <!-- 右侧配置 -->
     <div class="example__content--right">
       <div class="controller-button full">
-        <span
-          class="el-icon-close"
-          v-if="isOpen"
-          @click="handleToggleController(false)"
-        ></span>
-        <span
-          class="el-icon-setting"
-          v-else
-          @click="handleToggleController(true)"
-        ></span>
+        <span class="el-icon-close" v-if="isOpen" @click="handleToggleController(false)"></span>
+        <span class="el-icon-setting" v-else @click="handleToggleController(true)"></span>
       </div>
 
       <div class="controller-form-wrapper">
-        <controller-form v-if="isOpen" :form="options"></controller-form>
+        <ControllerForm v-if="isOpen" :form="options" />
       </div>
 
-      <github />
+      <Github />
     </div>
   </div>
 </template>
 
 <script>
 // dev test
-// import VueWaterfallPluginNext from "../index";
+// import { Waterfall, LazyImg } from '../index.js';
 
 // npm package test
-import VueWaterfallPluginNext from "vue-waterfall-plugin-next";
+import { Waterfall, LazyImg } from "vue-waterfall-plugin-next";
 import "vue-waterfall-plugin-next/dist/style.css";
 
-import ControllerForm from "./Form.vue";
-import Github from "./Github.vue";
+import ControllerForm from './Form.vue';
+import Github from './Github.vue';
 
-import { reactive, toRefs, ref, onMounted, computed } from "vue";
-import { getList } from "../api";
+import { reactive, ref, onMounted, computed } from 'vue';
+import { getList, getNoSizeImages } from '../api';
+import loading from '../assets/loading.png';
+import error from '../assets/error.png';
+
+// 侧边栏控制
+function useSlideBar() {
+  const WIDTH = '200px';
+  const controllerWidth = ref(WIDTH);
+  const isOpen = computed(() => {
+    return controllerWidth.value === WIDTH;
+  });
+  function handleToggleController(flag) {
+    controllerWidth.value = flag ? WIDTH : 'auto';
+  }
+
+  return {
+    isOpen,
+    controllerWidth,
+    handleToggleController,
+  };
+}
+
+function useWaterfall() {
+  const list = reactive([]);
+  const options = reactive({
+    // 卡片之间的间隙
+    gutter: 10,
+    // 是否有周围的gutter
+    hasAroundGutter: true,
+    // 卡片在PC上的宽度
+    width: 320,
+    // 自定义行显示个数，主要用于对移动端的适配
+    breakpoints: {
+      1200: {
+        //当屏幕宽度小于等于1200
+        rowPerView: 4,
+      },
+      800: {
+        //当屏幕宽度小于等于800
+        rowPerView: 3,
+      },
+      500: {
+        //当屏幕宽度小于等于500
+        rowPerView: 2,
+      },
+    },
+    // 动画效果
+    animationEffect: 'fadeInUp',
+    // 动画时间
+    animationDuration: 1000,
+    // 动画延迟
+    animationDelay: 300,
+    // 背景色
+    backgroundColor: '#2C2E3A',
+    // imgSelector
+    imgSelector: 'src.original',
+    // 加载配置
+    loadProps: {
+      loading,
+      error,
+    },
+    // 是否懒加载
+    lazyload: true,
+  });
+
+  onMounted(() => {
+    handleLoadMore();
+  });
+
+  // 加载更多
+  function handleLoadMore() {
+    list.push(...getNoSizeImages(30));
+  }
+
+  // 点击
+  function handleClick(item) {
+    alert(item.name);
+  }
+
+  return {
+    list,
+    options,
+    handleLoadMore,
+    handleClick,
+  };
+}
 
 export default {
   components: {
-    VueWaterfallPluginNext,
+    Waterfall,
+    LazyImg,
     ControllerForm,
     Github,
   },
 
   setup() {
-    const state = reactive({
-      // 列表数据
-      list: [],
-      // options
-      options: {
-        // 卡片之间的间隙
-        gutter: 10,
-        // 是否有周围的gutter
-        hasAroundGutter: true,
-        // 卡片在PC上的宽度
-        width: 240,
-        // 自定义行显示个数，主要用于对移动端的适配
-        breakpoints: {
-          1200: {
-            //当屏幕宽度小于等于1200
-            rowPerView: 4,
-          },
-          800: {
-            //当屏幕宽度小于等于800
-            rowPerView: 3,
-          },
-          500: {
-            //当屏幕宽度小于等于500
-            rowPerView: 2,
-          },
-        },
-        // 动画效果
-        animationEffect: "fadeInUp",
-        // 动画时间
-        animationDuration: 1000,
-        // 动画延迟
-        animationDelay: 300,
-        // 背景色
-        backgroundColor: "#2C2E3A",
-        // imgSelector
-        imgSelector: "src.original",
-      },
-    });
+    // 列表
+    const { list, options, handleLoadMore, handleClick } = useWaterfall();
 
-    onMounted(() => {
-      state.list = getList(8);
-    });
-
-    function handleAdd() {
-      state.list.push(...getList(10));
-    }
-
-    // controller
-    const WIDTH = "200px";
-    const controllerWidth = ref(WIDTH);
-    const isOpen = computed(() => {
-      return controllerWidth.value === WIDTH;
-    });
-    function handleToggleController(flag) {
-      controllerWidth.value = flag ? WIDTH : "auto";
-    }
-
-    // 点击
-    function handleClickCard(item) {
-      alert(item.name);
-    }
+    // 侧边栏控制
+    const { isOpen, controllerWidth, handleToggleController } = useSlideBar();
 
     return {
-      ...toRefs(state),
-      handleAdd,
-      handleClickCard,
-      handleToggleController,
+      list,
+      options,
+      handleLoadMore,
+      handleClick,
       isOpen,
       controllerWidth,
+      handleToggleController,
     };
   },
 };
@@ -224,17 +246,15 @@ export default {
 
 /* card */
 .card {
-  background-color: #ffffff;
+  background-color: #f2f2f2f2;
 }
-.card img {
-  display: block;
-  width: 100%;
-}
+
 .card .text {
   padding: 10px;
   text-align: center;
   font-size: 14px;
   color: #666666;
+  background-color: #ffffff;
 }
 
 .add-wrapper {

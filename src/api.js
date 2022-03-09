@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 13:34:56
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2021-10-22 17:52:12
+ * @LastEditTime: 2022-03-09 15:04:38
  */
 
 const COLORS = ['#409EFF', '#67C23A', '#E6A23C', '#F56C6C', '#909399'];
@@ -120,4 +120,23 @@ export function getList(num) {
     item.name = randomName();
   })
   return list.slice(0, num);
+}
+
+let start = 100;
+export function getNoSizeImages(pageSize = 10) {
+  const end = start + pageSize;
+  const list = [];
+  for (let i = start; i <= end; i++) {
+    const successURL = `https://images.weserv.nl/?url=https://api.mz-moe.cn/img/img${i}.jpg?timestamp=${Date.now()}`;
+    const errorURL = `https://api.mz-moe.cn/img/img${i}.jpg?timestamp=${Date.now()}`;
+    list.push({
+      src: {
+        original: Math.random() < 0.8 ? successURL : errorURL
+      },
+      backgroundColor: randomColor(),
+      name: randomName()
+    })
+  }
+  start = end + 1;
+  return list;
 }

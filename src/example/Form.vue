@@ -4,12 +4,12 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-18 11:16:32
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2021-10-18 14:16:48
+ * @LastEditTime: 2022-03-09 16:08:08
 -->
 <template>
   <el-form size="mini" label-position="top">
     <el-form-item label="imgSelector">
-      <el-input v-model="form.imgSelector" />
+      <el-input v-model="form.imgSelector" disabled/>
     </el-form-item>
     <el-divider content-position="left">排版</el-divider>
     <el-form-item label="width">

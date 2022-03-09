@@ -452,6 +452,42 @@ vue-waterfall-plugin-next@^1.0.5:
     vue "^3.0.5"
     vue-waterfall-plugin-next "^1.0.4"
 
+vue-waterfall-plugin-next@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/vue-waterfall-plugin-next/-/vue-waterfall-plugin-next-1.0.6.tgz#90f81223580db128c82d9ab6547f58ab47e40512"
+  integrity sha512-CW20Ww6OnGSoDGHHBZ2xoUdB2zcP3JxuNThLrcYqSUXim/yMsPGAvuzqhY98d0v3ZT5ctypU0usNmjG/u1CZbw==
+  dependencies:
+    element-plus "^1.1.0-beta.20"
+    vue "^3.0.5"
+    vue-waterfall-plugin-next "^1.0.5"
+
+vue-waterfall-plugin-next@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/vue-waterfall-plugin-next/-/vue-waterfall-plugin-next-1.0.7.tgz#3c0859e0afb4d3a9053620a2e94dade094916588"
+  integrity sha512-XqsFEZ2gy83TmNf6HgpiUpuIZXIjita9lDU5dydh2RP2up1WzenHoxaom0G77IkJA8jiTTpV3NW4JY2sjizQZw==
+  dependencies:
+    element-plus "^1.1.0-beta.20"
+    vue "^3.0.5"
+    vue-waterfall-plugin-next "^1.0.6"
+
+vue-waterfall-plugin-next@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/vue-waterfall-plugin-next/-/vue-waterfall-plugin-next-1.0.8.tgz#4bdaf22faa480d064928b60ce92a9c6722f1d870"
+  integrity sha512-lD2sUqd6vEyoHi32SmCQYvU6vduXbK6CIyVquDIzCU4sCx62WXxH2TQ3zuOnPp58Mk+rx0wOtPt0DT51+87xZw==
+  dependencies:
+    element-plus "^1.1.0-beta.20"
+    vue "^3.0.5"
+    vue-waterfall-plugin-next "^1.0.7"
+
+vue-waterfall-plugin-next@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/vue-waterfall-plugin-next/-/vue-waterfall-plugin-next-1.1.0.tgz#3d6d2ebb4c1c15d38f7c84cbb94dff80a4d76df2"
+  integrity sha512-uUJfCDqCZYxECVHArxcQPdmiplCxzLW561wRxZPyXoKkTsnGW/dhs1ZzZCoAa0/+B1XhEz/R82GOq0T2IkTD3Q==
+  dependencies:
+    element-plus "^1.1.0-beta.20"
+    vue "^3.0.5"
+    vue-waterfall-plugin-next "^1.0.8"
+
 vue@^3.0.5:
   version "3.2.20"
   resolved "https://registry.npmmirror.com/vue/download/vue-3.2.20.tgz?cache=0&sync_timestamp=1633712767060&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fvue%2Fdownload%2Fvue-3.2.20.tgz#940f8aa8bf3e3be78243ca582bad41fcd45ae3e6"
