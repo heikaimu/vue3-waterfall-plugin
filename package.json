@@ -1,0 +1,60 @@
+{
+  "version": "2.1.2",
+  "name": "vue-waterfall-plugin-next",
+  "author": "Yaowen Liu <576079353@qq.com>",
+  "license": "UNLICENSED",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/my-lib.umd.js",
+  "module": "./dist/my-lib.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/my-lib.es.js",
+      "require": "./dist/my-lib.umd.js"
+    },
+    "./style.css": {
+      "import": "./dist/style.css"
+    }
+  },
+  "types": "./dist/types/index.d.ts",
+  "scripts": {
+    "dev": "vite",
+    "build-lib": "vite build --mode=lib && vue-tsc --declaration --emitDeclarationOnly && mv dist/src dist/types",
+    "build-example": "vue-tsc --noEmit && vite build --mode=example",
+    "serve": "vite preview",
+    "test": "vitest",
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@vueuse/core": "^8.1.1",
+    "element-plus": "^2.1.4",
+    "vue": "^3.2.16",
+    "vue-waterfall-plugin-next": "^2.1.2"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.18.8",
+    "@types/lodash-es": "^4.17.6",
+    "@types/node": "^17.0.21",
+    "@vitejs/plugin-vue": "^1.9.3",
+    "autoprefix": "^1.0.1",
+    "autoprefixer": "^10.4.2",
+    "eslint": "^8.10.0",
+    "postcss": "^8.4.8",
+    "tailwindcss": "^3.0.23",
+    "typescript": "^4.4.3",
+    "vite": "^2.6.4",
+    "vitest": "^0.6.0",
+    "vue-tsc": "^0.33.2-patch.1"
+  },
+  "eslintConfig": {
+    "extends": "@antfu"
+  },
+  "respository": {
+    "type": "git",
+    "url": "https://github.com/heikaimu/vue3-waterfall-plugin"
+  },
+  "bugs": {
+    "url": "https://github.com/heikaimu/vue3-waterfall-plugin/issues"
+  }
+}
