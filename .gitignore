@@ -1,4 +1,6 @@
 node_modules
+dist
+example
 .DS_Store
 dist
 dist-ssr
