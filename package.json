@@ -21,7 +21,7 @@
   "scripts": {
     "dev": "vite",
     "build-lib": "vite build --mode=lib && vue-tsc --declaration --emitDeclarationOnly && mv dist/src dist/types",
-    "build-example": "vue-tsc --noEmit && vite build --mode=example",
+    "build-example": "vite build",
     "serve": "vite preview",
     "test": "vitest",
     "typecheck": "vue-tsc --noEmit"
