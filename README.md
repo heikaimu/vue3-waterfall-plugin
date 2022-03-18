@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-18 16:22:04
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-18 14:44:09
+ * @LastEditTime: 2022-03-18 15:18:13
 -->
 
 # Vue3 瀑布流组件
@@ -15,7 +15,7 @@
 
 [vue2 版本](https://github.com/heikaimu/vue-waterfall-plugin)
 
-#### 本地浏览
+#### 本地浏览1
 
 本地运行
 
