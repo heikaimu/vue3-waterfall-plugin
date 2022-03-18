@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 10:20:21
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-18 14:36:04
+ * @LastEditTime: 2022-03-18 17:07:52
 -->
 <template>
   <div
@@ -104,7 +104,7 @@ export default defineComponent({
     },
     delay: {
       type: Number,
-      default: 600,
+      default: 300,
     },
   },
 
@@ -203,19 +203,13 @@ export default defineComponent({
   position: absolute;
   left: 0;
   top: 0;
-  transition: .3s;
+  /* transition: .3s; */
   /* 初始位置设置到屏幕以外，避免懒加载失败 */
   transform: translate3d(0, 3000px, 0);
   visibility: hidden;
 }
 
-/* animation */
-.animated {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
+/* 初始的入场效果 */
 @-webkit-keyframes fadeIn {
   0% {
     opacity: 0;

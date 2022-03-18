@@ -2,16 +2,20 @@
  * @Author: Yaowen Liu
  * @Date: 2022-03-08 15:04:02
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-18 14:09:18
+ * @LastEditTime: 2022-03-18 17:21:00
  */
 import type { Ref } from 'vue'
-import { nextTick, onBeforeUpdate, ref } from 'vue'
+import { onBeforeUpdate, ref } from 'vue'
 import { getMax, getMin } from '../utils/math'
 import { addClass, hasClass, prefixStyle } from '../utils/dom'
 import type { WaterfallProps } from '../types/waterfall'
 import type { CssStyleObject } from '../types/util'
 
 const transform = prefixStyle('transform')
+const duration = prefixStyle('animation-duration')
+const delay = prefixStyle('animation-delay')
+const transition = prefixStyle('transition')
+const fillMode = prefixStyle('animation-fill-mode')
 
 export function useItemsPosition(props: WaterfallProps, itemWidth: Ref<number>, rowCount: Ref<number>, waterfallOffsetX: Ref<number>) {
   let itemRefs: HTMLElement[] = []
@@ -30,24 +34,34 @@ export function useItemsPosition(props: WaterfallProps, itemWidth: Ref<number>, 
 
   const addAnimation = (item: HTMLElement) => {
     const content = item!.firstChild as HTMLElement
-    const style = content.style as CssStyleObject
 
     if (content && !hasClass(content, 'animated')) {
       const durationSec = `${props.animationDuration / 1000}s`
       const delaySec = `${props.animationDelay / 1000}s`
-      style['animation-duration'] = durationSec
-      style['-webkit-animation-duration'] = durationSec
-      style['animation-delay'] = delaySec
-      style['-webkit-animation-delay'] = delaySec
+      const style = content.style as CssStyleObject
       style.visibility = 'visible'
+      if (duration)
+        style[duration] = durationSec
+
+      if (delay)
+        style[delay] = delaySec
+
+      if (fillMode)
+        style[fillMode] = 'both'
+
       addClass(content, 'animated')
       addClass(content, props.animationEffect)
     }
   }
 
+  // 初始化x集合y集合
+  const initXandY = () => {
+    posX = new Array(rowCount.value).fill(0)
+    posY = new Array(rowCount.value).fill(props.hasAroundGutter ? props.gutter : 0)
+  }
+
+  // 计算x集合
   const setPosX = () => {
-    posX = []
-    posY = []
     for (let i = 0; i < rowCount.value; i++) {
       let x = 0
       if (props.hasAroundGutter)
@@ -56,29 +70,28 @@ export function useItemsPosition(props: WaterfallProps, itemWidth: Ref<number>, 
       else
         x = props.gutter * i + itemWidth.value * i + waterfallOffsetX.value
 
-      posX.push(x)
-      posY.push(props.hasAroundGutter ? props.gutter : 0)
+      posX[i] = x
     }
   }
 
-  const setPosXY = () => {
-    for (let i = 0; i < itemRefs.length; i++) {
-      const item = itemRefs[i]
+  const setPosY = () => {
+    for (const item of itemRefs) {
+      const curY: number = getMin(posY)
+      const curYIndex = posY.indexOf(curY)
+      const curX = posX[curYIndex]
 
-      const minPosY: number = getMin(posY)
-      const minPosYIndex = posY.indexOf(minPosY)
-      const currentPosX = posX[minPosYIndex]
-
-      // set position
+      // 设置x,y
       const style = item.style as CssStyleObject
-      style.visibility = 'hidden'
-      if (transform) style[transform] = `translate3d(${currentPosX}px,${minPosY}px, 0)`
+      if (transform) style[transform] = `translate3d(${curX}px,${curY}px, 0)`
 
-      // update group height by current item element
+      // 更新当前index的y值
       const { height } = item.getBoundingClientRect()
-      posY[minPosYIndex] += height + props.gutter
+      posY[curYIndex] += height + props.gutter
 
-      // add animation
+      // 添加动画时间
+      if (transition) style[transition] = '.3s'
+
+      // 添加入场动画
       addAnimation(item)
     }
   }
@@ -89,9 +102,9 @@ export function useItemsPosition(props: WaterfallProps, itemWidth: Ref<number>, 
   }
 
   const setPosition = async() => {
+    initXandY()
     setPosX()
-    await nextTick()
-    setPosXY()
+    setPosY()
     setWrapperHeight()
   }
 

@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 10:20:21
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-18 15:04:09
+ * @LastEditTime: 2022-03-18 16:58:30
 -->
 <template>
   <div class="h-screen flex overflow-hidden">
@@ -26,12 +26,12 @@
         :load-props="options.loadProps"
       >
         <template #item="{ item, url, index }">
-          <div class="bg-gray-900 rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-linear hover:shadow-lg hover:shadow-gray-600">
+          <div class="bg-gray-900 rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-linear hover:shadow-lg hover:shadow-gray-600 group">
             <div class="overflow-hidden">
-              <LazyImg :url="url" class="cursor-pointer transition-all duration-300 ease-linear hover:scale-105" @click="handlePreview(item, url)" />
+              <LazyImg :url="url" class="cursor-pointer transition-all duration-300 ease-linear group-hover:scale-105" @click="handlePreview(item, url)" />
             </div>
             <div class="px-4 pt-2 pb-4 border-t border-t-gray-800">
-              <h2 class="pb-4 text-gray-50">
+              <h2 class="pb-4 text-gray-50 group-hover:text-yellow-500">
                 {{ item.name }}
               </h2>
               <div class="pt-3 flex justify-between items-center border-t border-t-gray-800 border-opacity-50">
@@ -89,9 +89,9 @@
 
 <script setup lang="ts">
 import { onMounted, reactive, ref } from 'vue'
-// import { LazyImg, Waterfall } from '../lib/index'
-import { LazyImg, Waterfall } from 'vue-waterfall-plugin-next'
-import 'vue-waterfall-plugin-next/style.css'
+import { LazyImg, Waterfall } from '../lib/index'
+// import { LazyImg, Waterfall } from 'vue-waterfall-plugin-next'
+// import 'vue-waterfall-plugin-next/style.css'
 import loading from '../assets/loading.png'
 import error from '../assets/error.png'
 import type { ViewCard } from '../lib/types/waterfall'

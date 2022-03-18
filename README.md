@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-18 16:22:04
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-18 16:05:33
+ * @LastEditTime: 2022-03-18 16:55:27
 -->
 
 # Vue3 瀑布流组件
@@ -70,7 +70,7 @@ data: {
 | `backgroundColor`   | `String`  | `#ffffff`        | 背景颜色                                                                                  |
 | `loadProps`         | `Object`  | `loadProps`         | 加载的图片和失败的图片                                                                       |
 | `lazyload`          | `Boolean` | `true`       | 是否开启懒加载                                                                       |
-| `delay`             | `Number`  | `600`         | 布局刷新的防抖时间，默认600ms内没有再次触发才刷新布局。（图片加载完成；容器大小、`list`、`width`、`gutter`、`hasAroundGutter`变化均会触发刷新） |
+| `delay`             | `Number`  | `300`         | 布局刷新的防抖时间，默认300ms内没有再次触发才刷新布局。（图片加载完成；容器大小、`list`、`width`、`gutter`、`hasAroundGutter`变化均会触发刷新） |
 
 `breakpoints`
 ```javascript

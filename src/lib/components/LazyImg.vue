@@ -2,7 +2,7 @@
  * @Author: Yaowen Liu
  * @Date: 2022-03-09 10:29:50
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-18 14:15:54
+ * @LastEditTime: 2022-03-18 17:20:03
 -->
 <template>
   <img ref="lazyRef" class="lazyload-box__img" alt="" srcset="">
@@ -25,15 +25,6 @@ export default defineComponent({
     const updatePosition = inject('updatePosition') as () => void
     const lazy = inject('lazy') as Lazy
     const lazyRef = ref<Nullable<HTMLImageElement>>(null)
-
-    // watch(
-    //   () => props.url,
-    //   () => {
-    //     lazy.update(lazyRef.value, props.url, () => {
-    //       updatePosition();
-    //     });
-    //   },
-    // );
 
     onMounted(() => {
       if (!lazyRef.value)
