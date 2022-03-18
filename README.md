@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-18 16:22:04
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-18 16:01:22
+ * @LastEditTime: 2022-03-18 16:05:33
 -->
 
 # Vue3 瀑布流组件
@@ -15,31 +15,19 @@ vue3 瀑布流插件，支持 PC 和移动端，支持 animate 的所有动画�
 
 [vue2 版本](https://github.com/heikaimu/vue-waterfall-plugin)
 
-#### 本地浏览
-
-本地运行
-
-```bash
-// 安装依赖
-npm install
-// 运行项目
-npm run dev
-```
-
-#### 插件安装
+#### 安装
 
 ```bash
 npm install vue-waterfall-plugin-next
 ```
 
-#### 引入
+#### 使用
 
 ```javascript
 import { LazyImg, Waterfall } from 'vue-waterfall-plugin-next'
 import 'vue-waterfall-plugin-next/dist/style.css'
 ```
 
-#### 使用
 ```html
 <Waterfall :list="list">
   <template #item="{ item, url, index }">
@@ -50,6 +38,7 @@ import 'vue-waterfall-plugin-next/dist/style.css'
   </template>
 </Waterfall>
 ```
+
 ```javascript
 data: {
   list: [
@@ -60,11 +49,12 @@ data: {
     ...
   ]
 }
+
 ```
 插槽返回了3个字端：
 `item` 原始数据, `url` 图片资源, `index` 卡片索引 
-#### `Props` 参数
 
+#### `Props` 参数
 | 参数名              | 类型    | 默认值     | 描述                                                                               |
 | ----------------- | ------- | ----------- | ----------------------------------------------------------------------------------------- |
 | `list`              | `Array`   | []          | 列表数据                                                                                  |
