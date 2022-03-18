@@ -4,18 +4,18 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-18 16:22:04
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-18 15:18:13
+ * @LastEditTime: 2022-03-18 15:52:19
 -->
 
 # Vue3 瀑布流组件
 
-#### vue3 waterfall plugin, support PC and mobile, support animate.css.,lazyload, vue3 瀑布流插件，支持 PC 和移动端，支持 animate 的所有动画效果，支持图片懒加载
+vue3 瀑布流插件，支持 PC 和移动端，支持 animate 的所有动画效果，支持图片懒加载
 
-[在线演示地址](https://heikaimu.github.io/vue3-waterfall-plugin/preview/index.html)
+[在线演示地址](https://vue3-waterfall.netlify.app/)
 
 [vue2 版本](https://github.com/heikaimu/vue-waterfall-plugin)
 
-#### 本地浏览1
+#### 本地浏览
 
 本地运行
 
@@ -29,7 +29,7 @@ npm run dev
 #### 插件安装
 
 ```
-yarn add vue-waterfall-plugin-next
+npm install vue-waterfall-plugin-next
 ```
 
 #### 引入
@@ -42,6 +42,15 @@ import 'vue-waterfall-plugin-next/dist/style.css'
 #### 使用
 
 ```js
+<Waterfall :list="list">
+  <template #item="{ item, url, index }">
+    <div class="card">
+      <LazyImg :url="url" />
+      <p class="text">这是内容</p>
+    </div>
+  </template>
+</Waterfall>
+
 data: {
   list: [
     {
@@ -52,19 +61,9 @@ data: {
   ]
 }
 ```
-
-`item` 所有数据, `url` 图片资源, `index` 卡片索引 
-```html
-<Waterfall :list="list">
-  <template #item="{ item, url, index }">
-    <div class="card">
-      <LazyImg :url="url" />
-      <p class="text">这是内容</p>
-    </div>
-  </template>
-</Waterfall>
-```
-#### 全部参数
+插槽返回了3个字端：
+`item` 原始数据, `url` 图片资源, `index` 卡片索引 
+#### `Props` 参数
 
 | Name              | Type    | Default     | Description                                                                               |
 | ----------------- | ------- | ----------- | ----------------------------------------------------------------------------------------- |
@@ -83,7 +82,7 @@ data: {
 | lazyload          | Boolean | true        | 是否开启懒加载                                                                       |
 | delay             | Number  | 600         | 布局刷新的防抖时间，默认600ms内没有再次触发才刷新布局。（图片加载完成；窗口宽度；list、width、gutter、hasAroundGutter变化均会触发刷新） |
 
-断点具体配置
+`breakpoints`
 ```js
 breakpoints: {
   1200: { //当屏幕宽度小于等于1200
@@ -98,7 +97,7 @@ breakpoints: {
 }
 ```
 
-加载参数具体配置
+`loadProps`
 ```js
 import loading from 'assets/loading.png'
 import error from 'assets/error.png'
