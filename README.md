@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-18 16:22:04
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-18 15:52:19
+ * @LastEditTime: 2022-03-18 15:53:34
 -->
 
 # Vue3 瀑布流组件
@@ -40,8 +40,7 @@ import 'vue-waterfall-plugin-next/dist/style.css'
 ```
 
 #### 使用
-
-```js
+```text
 <Waterfall :list="list">
   <template #item="{ item, url, index }">
     <div class="card">
@@ -50,7 +49,8 @@ import 'vue-waterfall-plugin-next/dist/style.css'
     </div>
   </template>
 </Waterfall>
-
+```
+```js
 data: {
   list: [
     {
