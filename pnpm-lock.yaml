@@ -17,13 +17,13 @@ specifiers:
   vitest: ^0.6.0
   vue: ^3.2.16
   vue-tsc: ^0.33.2-patch.1
-  vue-waterfall-plugin-next: ^2.1.2
+  vue-waterfall-plugin-next: ^2.1.3
 
 dependencies:
   '@vueuse/core': 8.1.1_vue@3.2.31
   element-plus: 2.1.4_1a412d14def5ff5ca1122000e4bee666
   vue: 3.2.31
-  vue-waterfall-plugin-next: 2.1.2_@types+lodash-es@4.17.6
+  vue-waterfall-plugin-next: 2.1.3_@types+lodash-es@4.17.6
 
 devDependencies:
   '@antfu/eslint-config': 0.18.8_eslint@8.11.0+typescript@4.6.2
@@ -3256,8 +3256,8 @@ packages:
       typescript: 4.6.2
     dev: true
 
-  /vue-waterfall-plugin-next/2.1.2_@types+lodash-es@4.17.6:
-    resolution: {integrity: sha512-I6a7tRK0gGHpyIPPjSG5RblfspK/srG02sgg2/Owx2FpnipeAz+3xDIhdosa7luTiVzETFwlXR+aD+Wxbkgx+w==}
+  /vue-waterfall-plugin-next/2.1.3_@types+lodash-es@4.17.6:
+    resolution: {integrity: sha512-LMlDuagJy08uTWGHfmgpiXKIi0ttBneuIdaT6q0bEucZp8gP6HBQOoxdiUAyCFnL49eAaHpZNDYMRzCuGK26Kw==}
     dependencies:
       '@vueuse/core': 8.1.1_vue@3.2.31
       element-plus: 2.1.4_1a412d14def5ff5ca1122000e4bee666

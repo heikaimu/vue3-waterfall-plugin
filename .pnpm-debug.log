@@ -1,0 +1,402 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 debug pnpm:package-manifest": {
+    "initial": {
+      "version": "2.1.3",
+      "name": "vue-waterfall-plugin-next",
+      "author": "Yaowen Liu <576079353@qq.com>",
+      "license": "UNLICENSED",
+      "files": [
+        "dist"
+      ],
+      "main": "./dist/my-lib.umd.js",
+      "module": "./dist/my-lib.es.js",
+      "exports": {
+        ".": {
+          "import": "./dist/my-lib.es.js",
+          "require": "./dist/my-lib.umd.js"
+        },
+        "./style.css": {
+          "import": "./dist/style.css"
+        }
+      },
+      "types": "./dist/types/index.d.ts",
+      "scripts": {
+        "dev": "vite",
+        "build-lib": "vite build --mode=lib && vue-tsc --declaration --emitDeclarationOnly && mv dist/src dist/types",
+        "build-example": "vite build",
+        "serve": "vite preview",
+        "test": "vitest",
+        "typecheck": "vue-tsc --noEmit"
+      },
+      "dependencies": {
+        "@vueuse/core": "^8.1.1",
+        "element-plus": "^2.1.4",
+        "vue": "^3.2.16",
+        "vue-waterfall-plugin-next": "file:vue-waterfall-plugin-next-2.1.3.tgz"
+      },
+      "devDependencies": {
+        "@antfu/eslint-config": "^0.18.8",
+        "@types/lodash-es": "^4.17.6",
+        "@types/node": "^17.0.21",
+        "@vitejs/plugin-vue": "^1.9.3",
+        "autoprefix": "^1.0.1",
+        "autoprefixer": "^10.4.2",
+        "eslint": "^8.10.0",
+        "postcss": "^8.4.8",
+        "tailwindcss": "^3.0.23",
+        "typescript": "^4.4.3",
+        "vite": "^2.6.4",
+        "vitest": "^0.6.0",
+        "vue-tsc": "^0.33.2-patch.1"
+      },
+      "eslintConfig": {
+        "extends": "@antfu"
+      },
+      "respository": {
+        "type": "git",
+        "url": "https://github.com/heikaimu/vue3-waterfall-plugin"
+      },
+      "bugs": {
+        "url": "https://github.com/heikaimu/vue3-waterfall-plugin/issues"
+      }
+    },
+    "prefix": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid"
+  },
+  "2 debug pnpm:context": {
+    "currentLockfileExists": false,
+    "storeDir": "/Users/liuyaowen/.pnpm-store/v3",
+    "virtualStoreDir": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid/node_modules/.pnpm"
+  },
+  "3 debug pnpm:stage": {
+    "prefix": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "stage": "resolution_started"
+  },
+  "4 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@antfu/eslint-config/0.18.8",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@antfu/eslint-config",
+      "rawSpec": "^0.18.8"
+    }
+  },
+  "5 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@types/lodash-es/4.17.6",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@types/lodash-es",
+      "rawSpec": "^4.17.6"
+    }
+  },
+  "6 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@types/node/17.0.21",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@types/node",
+      "rawSpec": "^17.0.21"
+    }
+  },
+  "7 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@vitejs/plugin-vue/1.10.2",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@vitejs/plugin-vue",
+      "rawSpec": "^1.9.3"
+    }
+  },
+  "8 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/autoprefix/1.0.1",
+    "wanted": {
+      "dependentId": ".",
+      "name": "autoprefix",
+      "rawSpec": "^1.0.1"
+    }
+  },
+  "9 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/autoprefixer/10.4.4",
+    "wanted": {
+      "dependentId": ".",
+      "name": "autoprefixer",
+      "rawSpec": "^10.4.2"
+    }
+  },
+  "10 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/eslint/8.11.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "eslint",
+      "rawSpec": "^8.10.0"
+    }
+  },
+  "11 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/postcss/8.4.12",
+    "wanted": {
+      "dependentId": ".",
+      "name": "postcss",
+      "rawSpec": "^8.4.8"
+    }
+  },
+  "12 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/tailwindcss/3.0.23",
+    "wanted": {
+      "dependentId": ".",
+      "name": "tailwindcss",
+      "rawSpec": "^3.0.23"
+    }
+  },
+  "13 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/typescript/4.6.2",
+    "wanted": {
+      "dependentId": ".",
+      "name": "typescript",
+      "rawSpec": "^4.4.3"
+    }
+  },
+  "14 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/vite/2.8.6",
+    "wanted": {
+      "dependentId": ".",
+      "name": "vite",
+      "rawSpec": "^2.6.4"
+    }
+  },
+  "15 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/vitest/0.6.3",
+    "wanted": {
+      "dependentId": ".",
+      "name": "vitest",
+      "rawSpec": "^0.6.0"
+    }
+  },
+  "16 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/vue-tsc/0.33.2-patch.1",
+    "wanted": {
+      "dependentId": ".",
+      "name": "vue-tsc",
+      "rawSpec": "^0.33.2-patch.1"
+    }
+  },
+  "17 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@vueuse/core/8.1.1",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@vueuse/core",
+      "rawSpec": "^8.1.1"
+    }
+  },
+  "18 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/element-plus/2.1.4",
+    "wanted": {
+      "dependentId": ".",
+      "name": "element-plus",
+      "rawSpec": "^2.1.4"
+    }
+  },
+  "19 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/vue/3.2.31",
+    "wanted": {
+      "dependentId": ".",
+      "name": "vue",
+      "rawSpec": "^3.2.16"
+    }
+  },
+  "20 debug pnpm:_dependency_resolved": {
+    "resolution": "file:vue-waterfall-plugin-next-2.1.3.tgz",
+    "wanted": {
+      "dependentId": ".",
+      "name": "vue-waterfall-plugin-next",
+      "rawSpec": "file:vue-waterfall-plugin-next-2.1.3.tgz"
+    }
+  },
+  "21 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@antfu/eslint-config/0.18.8",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "found_in_store"
+  },
+  "22 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@antfu/eslint-config/0.18.8",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "resolved"
+  },
+  "23 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@types/node/17.0.21",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "found_in_store"
+  },
+  "24 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@types/node/17.0.21",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "resolved"
+  },
+  "25 debug pnpm:progress": {
+    "packageId": "file:vue-waterfall-plugin-next-2.1.3.tgz",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "resolved"
+  },
+  "26 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@types/lodash-es/4.17.6",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "found_in_store"
+  },
+  "27 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@types/lodash-es/4.17.6",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "resolved"
+  },
+  "28 debug pnpm:progress": {
+    "packageId": "file:vue-waterfall-plugin-next-2.1.3.tgz",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "fetched"
+  },
+  "29 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/autoprefix/1.0.1",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "found_in_store"
+  },
+  "30 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/autoprefix/1.0.1",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "resolved"
+  },
+  "31 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vitejs/plugin-vue/1.10.2",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "found_in_store"
+  },
+  "32 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vitejs/plugin-vue/1.10.2",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "resolved"
+  },
+  "33 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/autoprefixer/10.4.4",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "found_in_store"
+  },
+  "34 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/autoprefixer/10.4.4",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "resolved"
+  },
+  "35 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/eslint/8.11.0",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "found_in_store"
+  },
+  "36 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/eslint/8.11.0",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "resolved"
+  },
+  "37 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/postcss/8.4.12",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "found_in_store"
+  },
+  "38 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/postcss/8.4.12",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "resolved"
+  },
+  "39 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/tailwindcss/3.0.23",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "found_in_store"
+  },
+  "40 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/tailwindcss/3.0.23",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "resolved"
+  },
+  "41 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/vite/2.8.6",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "found_in_store"
+  },
+  "42 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/vite/2.8.6",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "resolved"
+  },
+  "43 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/vitest/0.6.3",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "found_in_store"
+  },
+  "44 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/vitest/0.6.3",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "resolved"
+  },
+  "45 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/typescript/4.6.2",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "found_in_store"
+  },
+  "46 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/typescript/4.6.2",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "resolved"
+  },
+  "47 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/vue-tsc/0.33.2-patch.1",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "found_in_store"
+  },
+  "48 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/vue-tsc/0.33.2-patch.1",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "resolved"
+  },
+  "49 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vueuse/core/8.1.1",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "found_in_store"
+  },
+  "50 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vueuse/core/8.1.1",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "resolved"
+  },
+  "51 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/vue/3.2.31",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "found_in_store"
+  },
+  "52 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/vue/3.2.31",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "resolved"
+  },
+  "53 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/element-plus/2.1.4",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "found_in_store"
+  },
+  "54 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/element-plus/2.1.4",
+    "requester": "/Users/liuyaowen/Desktop/personal/github/waterfall-grid",
+    "status": "resolved"
+  },
+  "55 error pnpm": {
+    "code": "ERR_PNPM_FETCH_404",
+    "hint": "vue-waterfall-plugin-next-2.1.3.tgz is not in the npm registry, or you have no permission to fetch it.\n\nAn authorization header was used: Bearer 48bf[hidden]",
+    "request": {
+      "authHeaderValue": "Bearer 48bf2cc4-fc5a-4a72-b133-6c99e92b2d9d",
+      "url": "https://registry.npmjs.org/vue-waterfall-plugin-next-2.1.3.tgz"
+    },
+    "response": {
+      "size": 0
+    },
+    "pkgName": "vue-waterfall-plugin-next-2.1.3.tgz",
+    "pkgsStack": [],
+    "err": {
+      "name": "pnpm",
+      "message": "GET https://registry.npmjs.org/vue-waterfall-plugin-next-2.1.3.tgz: Not Found - 404",
+      "code": "ERR_PNPM_FETCH_404",
+      "stack": "pnpm: GET https://registry.npmjs.org/vue-waterfall-plugin-next-2.1.3.tgz: Not Found - 404\n    at RetryOperation._fn (/Users/liuyaowen/.nvm/versions/node/v14.17.0/lib/node_modules/pnpm/dist/pnpm.cjs:85709:19)\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)"
+    }
+  }
+}

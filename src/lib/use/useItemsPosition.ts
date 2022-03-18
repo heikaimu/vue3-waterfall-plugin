@@ -2,7 +2,7 @@
  * @Author: Yaowen Liu
  * @Date: 2022-03-08 15:04:02
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-18 17:21:00
+ * @LastEditTime: 2022-03-18 17:29:27
  */
 import type { Ref } from 'vue'
 import { onBeforeUpdate, ref } from 'vue'
@@ -89,6 +89,7 @@ export function useItemsPosition(props: WaterfallProps, itemWidth: Ref<number>, 
       posY[curYIndex] += height + props.gutter
 
       // 添加动画时间
+      console.log('transition', transition)
       if (transition) style[transition] = '.3s'
 
       // 添加入场动画
