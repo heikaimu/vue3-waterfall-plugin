@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-18 16:22:04
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-18 16:55:27
+ * @LastEditTime: 2022-03-21 10:49:02
 -->
 
 # Vue3 瀑布流组件
@@ -57,20 +57,20 @@ data: {
 #### `Props` 参数
 | 参数名              | 类型    | 默认值     | 描述                                                                               |
 | ----------------- | ------- | ----------- | ----------------------------------------------------------------------------------------- |
-| `list`              | `Array`   | []          | 列表数据                                                                                  |
-| `rowKey`           | `String`  | `id`          | 数据唯一的字段，比如列表里面的`id`, 如果要删除卡片，该字段为必填                                     |
-| `imgSelector`       | `String`  | `src`         | 图片字段选择器，主要用与监控图片加载完成触发重新排版，如果层级较深，使用 `xxx.xxx.xxx` 方式 |
-| `width`             | `Number`  | `200`         | 卡片在 PC 上的宽度                                                                        |
-| `breakpoints`       | `Object`  | `breakpoints` | 自定义行显示个数，主要用于对移动端的适配                                                  |
-| `gutter`            | `Number`  | `10`          | 卡片之间的间隙                                                                            |
-| `hasAroundGutter`   | `Boolean` | `true`        | 容器四周是否有 `gutter` 边距                                                                |
-| `animationEffect`   | `String`  | `fadeIn`      | 卡片入场动画，默认只有 `fadeIn`，引入 `animation.css` 后可使用其他动画                        |
-| `animationDuration` | `Number`  | `1000`        | 动画执行时间（单位毫秒）                                                                  |
-| `animationDelay`    | `Number`  | `300`         | 动画延迟（单位毫秒）                                                                      |
-| `backgroundColor`   | `String`  | `#ffffff`        | 背景颜色                                                                                  |
-| `loadProps`         | `Object`  | `loadProps`         | 加载的图片和失败的图片                                                                       |
-| `lazyload`          | `Boolean` | `true`       | 是否开启懒加载                                                                       |
-| `delay`             | `Number`  | `300`         | 布局刷新的防抖时间，默认300ms内没有再次触发才刷新布局。（图片加载完成；容器大小、`list`、`width`、`gutter`、`hasAroundGutter`变化均会触发刷新） |
+| `list`              | `Array`   | []          | 列表数据 |
+| `rowKey`           | `String`  | `id`          | 数据唯一的字段，比如列表里面的`id`, 如果要删除卡片，该字段为必填 |
+| `imgSelector`       | `String`  | `src`         | 图片字段选择器，如果层级较深，使用 `xxx.xxx.xxx` 方式 |
+| `width`             | `Number`  | `200`         | 卡片在 PC 上的宽度 |
+| `breakpoints`       | `Object`  | `breakpoints` | 自定义行显示个数，主要用于对移动端的适配 |
+| `gutter`            | `Number`  | `10`          | 卡片之间的间隙 |
+| `hasAroundGutter`   | `Boolean` | `true`        | 容器四周是否有 `gutter` 边距 |
+| `animationEffect`   | `String`  | `fadeIn`      | 卡片入场动画，默认只有 `fadeIn`，引入 `animation.css` 后可使用其他动画 |
+| `animationDuration` | `Number`  | `1000`        | 动画执行时间（单位毫秒）|
+| `animationDelay`    | `Number`  | `300`         | 动画延迟（单位毫秒）|
+| `backgroundColor`   | `String`  | `#ffffff`     | 背景颜色 |
+| `loadProps`         | `Object`  | `loadProps`   | 加载的图片和失败的图片 |
+| `lazyload`          | `Boolean` | `true`        | 是否开启懒加载 |
+| `delay`             | `Number`  | `300`         | 布局刷新的防抖时间，默认 `300ms` 内没有再次触发才刷新布局。（图片加载完成；容器大小、`list`、`width`、`gutter`、`hasAroundGutter`变化时均会触发刷新） |
 
 `breakpoints`
 ```javascript
