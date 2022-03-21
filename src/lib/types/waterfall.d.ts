@@ -2,7 +2,7 @@
  * @Author: Yaowen Liu
  * @Date: 2022-03-17 14:41:05
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-18 14:07:51
+ * @LastEditTime: 2022-03-21 11:05:13
  */
 export interface ViewCard {
   src: any
@@ -28,6 +28,7 @@ export interface WaterfallProps {
   hasAroundGutter: boolean
   gutter: number
   list: ViewCard[]
+  animationPrefix: string
 }
 
 export interface ItemWidthProps {

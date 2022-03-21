@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 10:20:21
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-18 17:33:23
+ * @LastEditTime: 2022-03-21 11:10:48
 -->
 <template>
   <div class="h-screen flex overflow-hidden">
@@ -158,7 +158,7 @@ function useWaterfall() {
       },
     },
     // 动画效果
-    animationEffect: 'fadeInUp',
+    animationEffect: 'animate__fadeInUp',
     // 动画时间
     animationDuration: 1000,
     // 动画延迟

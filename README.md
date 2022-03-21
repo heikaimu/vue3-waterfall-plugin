@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-18 16:22:04
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-21 10:49:02
+ * @LastEditTime: 2022-03-21 11:08:35
 -->
 
 # Vue3 瀑布流组件
@@ -64,6 +64,7 @@ data: {
 | `breakpoints`       | `Object`  | `breakpoints` | 自定义行显示个数，主要用于对移动端的适配 |
 | `gutter`            | `Number`  | `10`          | 卡片之间的间隙 |
 | `hasAroundGutter`   | `Boolean` | `true`        | 容器四周是否有 `gutter` 边距 |
+| `animationPrefix`   | `String`  | `animate__animated` | `animate.css` 的动画绑定 `className`，默认的是 `4.x.x` 版本，如果想使用老版本，只需要改成 `animated` 即可 |
 | `animationEffect`   | `String`  | `fadeIn`      | 卡片入场动画，默认只有 `fadeIn`，引入 `animation.css` 后可使用其他动画 |
 | `animationDuration` | `Number`  | `1000`        | 动画执行时间（单位毫秒）|
 | `animationDelay`    | `Number`  | `300`         | 动画延迟（单位毫秒）|

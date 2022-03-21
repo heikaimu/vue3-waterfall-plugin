@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 10:20:21
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-18 17:07:52
+ * @LastEditTime: 2022-03-21 11:04:35
 -->
 <template>
   <div
@@ -77,6 +77,10 @@ export default defineComponent({
     hasAroundGutter: {
       type: Boolean,
       default: true,
+    },
+    animationPrefix: {
+      type: String,
+      default: 'animate__animated',
     },
     animationEffect: {
       type: String,

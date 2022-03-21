@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-18 11:16:32
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-17 18:03:37
+ * @LastEditTime: 2022-03-21 11:00:15
 -->
 <template>
   <el-form size="small" label-position="top">
@@ -87,15 +87,15 @@ const effectOptions = ref([
   },
   {
     label: 'fadeInUp',
-    value: 'fadeInUp',
+    value: 'animate__fadeInUp',
   },
   {
     label: 'fadeInDown',
-    value: 'fadeInDown',
+    value: 'animate__fadeInDown',
   },
   {
     label: 'zoomIn',
-    value: 'zoomIn',
+    value: 'animate__zoomIn',
   },
 ])
 </script>

@@ -6,6 +6,7 @@ specifiers:
   '@types/node': ^17.0.21
   '@vitejs/plugin-vue': ^1.9.3
   '@vueuse/core': ^8.1.1
+  animate.css: ^4.1.1
   autoprefix: ^1.0.1
   autoprefixer: ^10.4.2
   element-plus: ^2.1.4
@@ -17,13 +18,14 @@ specifiers:
   vitest: ^0.6.0
   vue: ^3.2.16
   vue-tsc: ^0.33.2-patch.1
-  vue-waterfall-plugin-next: ^2.1.3
+  vue-waterfall-plugin-next: ^2.1.4
 
 dependencies:
   '@vueuse/core': 8.1.1_vue@3.2.31
+  animate.css: 4.1.1
   element-plus: 2.1.4_1a412d14def5ff5ca1122000e4bee666
   vue: 3.2.31
-  vue-waterfall-plugin-next: 2.1.3_@types+lodash-es@4.17.6
+  vue-waterfall-plugin-next: 2.1.4_@types+lodash-es@4.17.6
 
 devDependencies:
   '@antfu/eslint-config': 0.18.8_eslint@8.11.0+typescript@4.6.2
@@ -658,6 +660,10 @@ packages:
     resolution: {integrity: sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=}
     engines: {node: '>=0.4.2'}
     dev: true
+
+  /animate.css/4.1.1:
+    resolution: {integrity: sha512-+mRmCTv6SbCmtYJCN4faJMNFVNN5EuCTTprDTAo7YzIGji2KADmakjVA3+8mVDkZ2Bf09vayB35lSQIex2+QaQ==}
+    dev: false
 
   /ansi-regex/5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
@@ -3256,10 +3262,11 @@ packages:
       typescript: 4.6.2
     dev: true
 
-  /vue-waterfall-plugin-next/2.1.3_@types+lodash-es@4.17.6:
-    resolution: {integrity: sha512-LMlDuagJy08uTWGHfmgpiXKIi0ttBneuIdaT6q0bEucZp8gP6HBQOoxdiUAyCFnL49eAaHpZNDYMRzCuGK26Kw==}
+  /vue-waterfall-plugin-next/2.1.4_@types+lodash-es@4.17.6:
+    resolution: {integrity: sha512-tIMVLJSBQ5zPTNv7r3EsrnrWbVbMWIUM73lijyq0TvAoaZioQE1PaFzb7qUgnlmmhGqy3DQRr6b7WNm8gHvsvg==}
     dependencies:
       '@vueuse/core': 8.1.1_vue@3.2.31
+      animate.css: 4.1.1
       element-plus: 2.1.4_1a412d14def5ff5ca1122000e4bee666
       vue: 3.2.31
     transitivePeerDependencies:

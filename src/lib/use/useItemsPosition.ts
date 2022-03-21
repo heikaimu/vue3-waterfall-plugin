@@ -2,7 +2,7 @@
  * @Author: Yaowen Liu
  * @Date: 2022-03-08 15:04:02
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-18 17:29:27
+ * @LastEditTime: 2022-03-21 11:05:00
  */
 import type { Ref } from 'vue'
 import { onBeforeUpdate, ref } from 'vue'
@@ -35,7 +35,7 @@ export function useItemsPosition(props: WaterfallProps, itemWidth: Ref<number>, 
   const addAnimation = (item: HTMLElement) => {
     const content = item!.firstChild as HTMLElement
 
-    if (content && !hasClass(content, 'animated')) {
+    if (content && !hasClass(content, props.animationPrefix)) {
       const durationSec = `${props.animationDuration / 1000}s`
       const delaySec = `${props.animationDelay / 1000}s`
       const style = content.style as CssStyleObject
@@ -49,7 +49,7 @@ export function useItemsPosition(props: WaterfallProps, itemWidth: Ref<number>, 
       if (fillMode)
         style[fillMode] = 'both'
 
-      addClass(content, 'animated')
+      addClass(content, props.animationPrefix)
       addClass(content, props.animationEffect)
     }
   }
@@ -89,7 +89,6 @@ export function useItemsPosition(props: WaterfallProps, itemWidth: Ref<number>, 
       posY[curYIndex] += height + props.gutter
 
       // 添加动画时间
-      console.log('transition', transition)
       if (transition) style[transition] = '.3s'
 
       // 添加入场动画
