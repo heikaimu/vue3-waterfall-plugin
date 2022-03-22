@@ -20,8 +20,8 @@
   "types": "./dist/types/index.d.ts",
   "scripts": {
     "dev": "vite",
-    "build-lib": "vite build --mode=lib && vue-tsc --declaration --emitDeclarationOnly && mv dist/src dist/types",
-    "build-example": "vite build",
+    "build:npm": "cross-env TARGET=npm vite build && vue-tsc --declaration --emitDeclarationOnly && mv dist/src dist/types",
+    "build:page": "cross-env TARGET=page vite build",
     "serve": "vite preview",
     "test": "vitest",
     "typecheck": "vue-tsc --noEmit"
@@ -40,6 +40,7 @@
     "@vitejs/plugin-vue": "^1.9.3",
     "autoprefix": "^1.0.1",
     "autoprefixer": "^10.4.2",
+    "cross-env": "^7.0.3",
     "eslint": "^8.10.0",
     "postcss": "^8.4.8",
     "tailwindcss": "^3.0.23",
