@@ -1,5 +1,5 @@
 {
-  "version": "2.1.4",
+  "version": "2.1.6",
   "name": "vue-waterfall-plugin-next",
   "author": "Yaowen Liu <576079353@qq.com>",
   "license": "UNLICENSED",
@@ -31,7 +31,7 @@
     "animate.css": "^4.1.1",
     "element-plus": "^2.1.4",
     "vue": "^3.2.16",
-    "vue-waterfall-plugin-next": "^2.1.4"
+    "vue-waterfall-plugin-next": "^2.1.6"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.18.8",

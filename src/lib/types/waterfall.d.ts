@@ -2,7 +2,7 @@
  * @Author: Yaowen Liu
  * @Date: 2022-03-17 14:41:05
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-21 11:05:13
+ * @LastEditTime: 2022-03-23 14:44:20
  */
 export interface ViewCard {
   src: any
@@ -41,17 +41,4 @@ export interface ItemWidthProps {
 
 export interface ItemWidthByBreakpointProps extends ItemWidthProps {
   size: number
-}
-
-export interface LazyOptions {
-  error?: string
-  loading?: string
-  observerOptions?: IntersectionObserverInit
-  log?: boolean
-}
-
-export interface ValueFormatterObject {
-  src: string
-  error?: string
-  loading?: string
 }

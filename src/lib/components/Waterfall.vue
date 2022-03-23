@@ -4,20 +4,14 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 10:20:21
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-21 11:04:35
+ * @LastEditTime: 2022-03-23 17:20:23
 -->
 <template>
-  <div
-    ref="waterfallWrapper"
-    class="waterfall-list"
-    :style="{ height: `${waterfallWrapperHeight}px` }"
-  >
+  <div ref="waterfallWrapper" class="waterfall-list" :style="{ height: `${wrapperHeight}px` }">
     <div
       v-for="(item, index) in list"
-      :ref="setItemRef"
       :key="getKey(item, index)"
       class="waterfall-item"
-      :style="{ width: `${itemWidth}px` }"
     >
       <div class="waterfall-card">
         <slot name="item" :item="item" :index="index" :url="getRenderURL(item)" />
@@ -28,11 +22,11 @@
 
 <script lang="ts">
 import type { PropType } from 'vue'
-import { defineComponent, nextTick, provide, ref, watch } from 'vue'
-import { useResizeObserver } from '@vueuse/core'
-import { useItemsPosition, useWrapperSize } from '../use'
+import { defineComponent, provide, ref, watch } from 'vue'
+import { useDebounceFn } from '@vueuse/core'
+import { useCalculateCols, useLayout } from '../use'
 import Lazy from '../utils/Lazy'
-import { debounce, getValue } from '../utils/util'
+import { getValue } from '../utils/util'
 import type { ViewCard } from '../types/waterfall'
 
 export default defineComponent({
@@ -104,7 +98,7 @@ export default defineComponent({
     },
     loadProps: {
       type: Object,
-      default: () => {},
+      default: () => { },
     },
     delay: {
       type: Number,
@@ -113,82 +107,66 @@ export default defineComponent({
   },
 
   setup(props) {
+    const lazy = new Lazy(props.lazyload, props.loadProps)
+    provide('lazy', lazy)
+
     // 容器块信息
     const {
       waterfallWrapper,
-      waterfallOffsetX,
-      itemWidth,
-      rowCount,
-      setWaterfallWrapperWidth,
-      setItemWidth,
-      setRowCount,
-      setWaterfallOffsetX,
-    } = useWrapperSize(props)
+      wrapperWidth,
+      colWidth,
+      cols,
+      offsetX,
+    } = useCalculateCols(props)
 
     // 容器高度，块定位
-    const { waterfallWrapperHeight, setPosition, setItemRef } = useItemsPosition(
+    const { wrapperHeight, layoutHandle } = useLayout(
       props,
-      itemWidth,
-      rowCount,
-      waterfallOffsetX,
+      colWidth,
+      cols,
+      offsetX,
     )
 
-    // 渲染
-    const renderer = debounce(async() => {
-      setWaterfallWrapperWidth()
-      await nextTick()
-      setItemWidth()
-      await nextTick()
-      setRowCount()
-      await nextTick()
-      setWaterfallOffsetX()
-      await nextTick()
-      setPosition()
+    // 1s内最多执行一次排版，减少性能开销
+    const renderer = useDebounceFn(() => {
+      layoutHandle()
     }, props.delay)
 
-    // 当容器宽度发生变化的时候更新位置
-    const lastWidth = ref(0)
-    useResizeObserver(waterfallWrapper, (entries) => {
-      const entry = entries[0]
-      const { width } = entry.contentRect
-      lastWidth.value = width
-    })
-
-    watch(lastWidth, () => {
-      renderer()
-    })
-
-    // width,gutter变化的时候重新渲染
+    // 列表发生变化直接触发排版
     watch(
-      () => [props.width, props.gutter, props.hasAroundGutter, props.list.length],
+      () => [wrapperWidth, colWidth, props.list],
       () => {
         renderer()
       },
       { deep: true },
     )
 
-    function updatePosition() {
-      renderer()
-    }
+    // 尺寸宽度变化防抖触发
+    const sizeChangeTime = ref(0)
 
-    function getRenderURL(item: ViewCard) {
+    // watchDebounced(colWidth, () => {
+    //   layoutHandle()
+    //   sizeChangeTime.value += 1
+    // }, { debounce: props.delay })
+
+    provide('sizeChangeTime', sizeChangeTime)
+
+    // 图片加载完成
+    provide('imgLoaded', renderer)
+
+    // 根据选择器获取图片地址
+    const getRenderURL = (item: ViewCard): string => {
       return getValue(item, props.imgSelector)[0]
     }
 
-    function getKey(item: ViewCard, index: number) {
+    // 获取唯一值
+    const getKey = (item: ViewCard, index: number): string => {
       return item[props.rowKey] || index
     }
 
-    const lazy = new Lazy(props.lazyload, props.loadProps)
-    provide('lazy', lazy)
-    provide('updatePosition', updatePosition)
-
     return {
       waterfallWrapper,
-      itemWidth,
-      rowCount,
-      waterfallWrapperHeight,
-      setItemRef,
+      wrapperHeight,
       getRenderURL,
       getKey,
     }

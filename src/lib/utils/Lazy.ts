@@ -1,6 +1,13 @@
-import type { LazyOptions, ValueFormatterObject } from '../types/waterfall'
+import type { LazyOptions, ValueFormatterObject } from '../types/lazy'
+import type { CssStyleObject } from './../types/util.d'
 import { assign, hasIntersectionObserver, isObject } from './util'
 import { loadImage } from './loader'
+
+enum LifecycleEnum {
+  LOADING = 'loading',
+  LOADED = 'loaded',
+  ERROR = 'error',
+}
 
 const DEFAULT_OBSERVER_OPTIONS = {
   rootMargin: '0px',
@@ -33,6 +40,7 @@ export default class Lazy {
   // mount
   mount(el: HTMLImageElement, binding: string | ValueFormatterObject, callback: () => void): void {
     const { src, loading, error } = this._valueFormatter(binding)
+    el.setAttribute('lazy', LifecycleEnum.LOADING)
     el.setAttribute('src', loading || DEFAULT_LOADING)
     if (!this.lazyActive) {
       this._setImageSrc(el, src, callback, error)
@@ -48,13 +56,21 @@ export default class Lazy {
     }
   }
 
-  // update
-  // update(el, binding, callback) {
-  //   const imgItem = this._realObserver(el);
-  //   imgItem && imgItem.unobserve(el);
-  //   const { src, error } = this._valueFormatter(binding);
-  //   this._initIntersectionObserver(el, src, error, callback);
-  // }
+  // resize
+  resize(el: HTMLImageElement, callback: () => void) {
+    const lazy = el.getAttribute('lazy')
+    const src = el.getAttribute('src')
+    if (lazy && lazy === LifecycleEnum.LOADED && src) {
+      loadImage(src).then((image) => {
+        const { width, height } = image
+        const curHeight = (el.width / width) * height
+        el.height = curHeight
+        const style = el.style as CssStyleObject
+        style.height = `${curHeight}px`
+        callback()
+      })
+    }
+  }
 
   // unmount
   unmount(el: HTMLElement): void {
@@ -81,17 +97,30 @@ export default class Lazy {
 
     loadImage(src)
       .then((image) => {
-        const { width, height } = image
-        el.height = (el.width / width) * height
+        // parent
+        // const parent = el.parentElement as HTMLElement
+        // const pWidth = parent.clientWidth
+        // const pHeight = (pWidth / width) * height
+        // const style = parent.style as CssStyleObject
+        // style.height = `${pHeight}px`
         // 先清空，避免加载图在修改尺寸后被拉伸
-        el.setAttribute('src', '')
+        el.setAttribute('lazy', LifecycleEnum.LOADED)
+        el.removeAttribute('src')
         el.setAttribute('src', src)
+        const { width, height } = image
+        const curHeight = (el.width / width) * height
+        el.height = curHeight
+        const style = el.style as CssStyleObject
+        style.height = `${curHeight}px`
         callback()
       })
       .catch(() => {
         const imgItem = this._realObserver(el)
         imgItem && imgItem.disconnect()
-        if (error) el.setAttribute('src', error)
+        if (error) {
+          el.setAttribute('lazy', LifecycleEnum.ERROR)
+          el.setAttribute('src', error)
+        }
         this._log(() => {
           throw new Error(`Image failed to load!And failed src was: ${src} `)
         })

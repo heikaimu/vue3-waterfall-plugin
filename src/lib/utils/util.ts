@@ -28,7 +28,7 @@ export function getValue(form: any, ...selectors: string[]) {
  * @param {*} delay
  * @returns
  */
-export function debounce(fn: () => {}, delay: number) {
+export function debounce(fn: (args?: any) => void, delay: number) {
   let timer: NodeJS.Timeout | null
   return function(this: any, ...args: any) {
     timer && clearTimeout(timer)

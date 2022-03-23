@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 13:34:56
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-18 14:12:05
+ * @LastEditTime: 2022-03-23 14:13:01
  */
 
 import { randomID } from '../lib/utils/math'
@@ -59,13 +59,14 @@ export function getList(pageSize = 10) {
   const end = start + pageSize
   const list: ViewCard[] = []
   for (let i = start; i <= end; i++) {
-    const successURL = `https://images.weserv.nl/?url=https://api.mz-moe.cn/img/img${i}.jpg?timestamp=${Date.now()}`
+    const successURL = `https://images.weserv.nl/?url=https://api.mz-moe.cn/img/img${i}.jpg`
+    // const successURL = `https://images.weserv.nl/?url=https://api.mz-moe.cn/img/img${i}.jpg?timestamp=${Date.now()}`
     const errorURL = 'https://api.mz-moe.cn/img/img00000.jpg'
     list.push({
       id: randomID(),
       star: false,
       src: {
-        original: Math.random() < 0.8 ? successURL : errorURL,
+        original: Math.random() < 0.95 ? successURL : errorURL,
       },
       backgroundColor: randomColor(),
       name: randomName(),

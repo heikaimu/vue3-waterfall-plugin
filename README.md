@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-18 16:22:04
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-21 11:08:35
+ * @LastEditTime: 2022-03-23 17:14:58
 -->
 
 # Vue3 瀑布流组件
@@ -95,5 +95,22 @@ import error from 'assets/error.png'
 loadProps: {
   loading,
   error
+}
+```
+
+懒加载图片样式覆盖，需要将覆盖样式放在全局才能生效
+```css
+.lazy__img[lazy=loading] {
+  padding: 5em 0;
+  width: 48px;
+}
+
+.lazy__img[lazy=loaded] {
+  width: 100%;
+}
+
+.lazy__img[lazy=error] {
+  padding: 5em 0;
+  width: 48px;
 }
 ```

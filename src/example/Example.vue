@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 10:20:21
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-21 11:10:48
+ * @LastEditTime: 2022-03-23 17:23:09
 -->
 <template>
   <div class="h-screen flex overflow-hidden">
@@ -89,9 +89,9 @@
 
 <script setup lang="ts">
 import { onMounted, reactive, ref } from 'vue'
-// import { LazyImg, Waterfall } from '../lib/index'
-import { LazyImg, Waterfall } from 'vue-waterfall-plugin-next'
-import 'vue-waterfall-plugin-next/style.css'
+import { LazyImg, Waterfall } from '../lib/index'
+// import { LazyImg, Waterfall } from 'vue-waterfall-plugin-next'
+// import 'vue-waterfall-plugin-next/style.css'
 import loading from '../assets/loading.png'
 import error from '../assets/error.png'
 import type { ViewCard } from '../lib/types/waterfall'

@@ -2,9 +2,20 @@
  * @Author: Yaowen Liu
  * @Date: 2022-03-18 14:11:45
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-18 14:15:33
+ * @LastEditTime: 2022-03-23 16:30:06
  */
-import type { LazyOptions, ValueFormatterObject } from '../types/waterfall'
+export interface LazyOptions {
+  error?: string
+  loading?: string
+  observerOptions?: IntersectionObserverInit
+  log?: boolean
+}
+
+export interface ValueFormatterObject {
+  src: string
+  error?: string
+  loading?: string
+}
 
 export default class Lazy {
   lazyActive: boolean
@@ -27,8 +38,12 @@ export default class Lazy {
   //   this._initIntersectionObserver(el, src, error, callback);
   // }
 
+  // refreshBox(el: HTMLImageElement): void
+
   // unmount
   unmount(el: HTMLElement): void
+
+  resize(el: HTMLElement, callback: () => void): void
 
   /**
    * 设置img的src
