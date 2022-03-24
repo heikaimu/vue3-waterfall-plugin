@@ -2,12 +2,12 @@
  * @Author: Yaowen Liu
  * @Date: 2022-03-14 10:05:09
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-16 15:00:46
+ * @LastEditTime: 2022-03-24 14:22:09
  */
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  purge: ['./index.html', './example/**/*.{vue,js,ts,jsx,tsx}', './lib/**/*.{vue,js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {

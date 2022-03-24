@@ -2,7 +2,7 @@
  * @Author: Yaowen Liu
  * @Date: 2022-03-08 15:04:02
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-23 16:37:03
+ * @LastEditTime: 2022-03-24 12:10:36
  */
 import type { Ref } from 'vue'
 import { ref } from 'vue'
@@ -70,11 +70,11 @@ export function useLayout(props: WaterfallProps, colWidth: Ref<number>, cols: Re
       const { height } = curItem.getBoundingClientRect()
       posY.value[minYIndex] += height + props.gutter
 
-      // 添加动画时间
-      if (transition) style[transition] = '.3s'
-
       // 添加入场动画
-      animation(curItem)
+      animation(curItem, () => {
+        // 添加动画时间
+        if (transition) style[transition] = '.3s'
+      })
     }
 
     wrapperHeight.value = Math.max.apply(null, posY.value)
@@ -88,7 +88,7 @@ export function useLayout(props: WaterfallProps, colWidth: Ref<number>, cols: Re
 
 // 动画
 function addAnimation(props: WaterfallProps) {
-  return (item: HTMLElement) => {
+  return (item: HTMLElement, callback?: () => void) => {
     const content = item!.firstChild as HTMLElement
     if (content && !hasClass(content, props.animationPrefix)) {
       const durationSec = `${props.animationDuration / 1000}s`
@@ -106,6 +106,12 @@ function addAnimation(props: WaterfallProps) {
 
       addClass(content, props.animationPrefix)
       addClass(content, props.animationEffect)
+
+      if (callback) {
+        setTimeout(() => {
+          callback()
+        }, props.animationDuration + props.animationDelay)
+      }
     }
   }
 }

@@ -2,7 +2,7 @@
  * @Author: Yaowen Liu
  * @Date: 2022-03-08 14:59:00
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-23 15:04:25
+ * @LastEditTime: 2022-03-24 11:01:51
  */
 import { computed, ref } from 'vue'
 import { useResizeObserver } from '@vueuse/core'
@@ -33,11 +33,8 @@ export function useCalculateCols(props: WaterfallProps) {
 
   // 列
   const cols = computed(() => {
-    if (props.hasAroundGutter)
-      return Math.floor((wrapperWidth.value - props.gutter) / (colWidth.value + props.gutter))
-
-    else
-      return Math.floor((wrapperWidth.value + props.gutter) / (colWidth.value + props.gutter))
+    const offset = props.hasAroundGutter ? -props.gutter : props.gutter
+    return Math.floor((wrapperWidth.value + offset) / (colWidth.value + props.gutter))
   })
 
   // 偏移

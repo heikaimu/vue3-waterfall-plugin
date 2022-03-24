@@ -4,11 +4,18 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 13:34:56
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-23 14:13:01
+ * @LastEditTime: 2022-03-24 14:25:30
  */
-
-import { randomID } from '../lib/utils/math'
 import type { ViewCard } from '../lib/types/waterfall'
+
+/**
+ * 获取随机ID
+ * @param {*} length
+ * @returns
+ */
+export function randomID(length = 6) {
+  return Number(Math.random().toString().substr(3, length) + Date.now()).toString(36)
+}
 
 const COLORS = ['#409EFF', '#67C23A', '#E6A23C', '#F56C6C', '#909399']
 const NAMES = [

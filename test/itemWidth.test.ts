@@ -2,10 +2,10 @@
  * @Author: Yaowen Liu
  * @Date: 2022-03-11 17:54:36
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-17 16:25:48
+ * @LastEditTime: 2022-03-24 14:27:58
  */
 import { describe, expect, it } from 'vitest'
-import { getItemWidth } from '../src/lib/utils/itemWidth'
+import { getItemWidth } from '../lib/utils/itemWidth'
 
 describe('item 的宽度', () => {
   it('无断点', () => {
