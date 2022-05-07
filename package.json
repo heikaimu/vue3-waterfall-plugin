@@ -1,13 +1,11 @@
 {
-  "version": "2.1.7",
   "name": "vue-waterfall-plugin-next",
-  "author": "Yaowen Liu <576079353@qq.com>",
+  "version": "2.1.7",
   "license": "UNLICENSED",
-  "files": [
-    "dist"
-  ],
+  "author": "Yaowen Liu <576079353@qq.com>",
   "main": "./dist/my-lib.umd.js",
   "module": "./dist/my-lib.es.js",
+  "types": "./dist/types/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/my-lib.es.js",
@@ -17,7 +15,9 @@
       "import": "./dist/style.css"
     }
   },
-  "types": "./dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build:npm": "cross-env TARGET=npm vite build && vue-tsc --declaration --emitDeclarationOnly && mv dist/lib dist/types",
@@ -30,8 +30,7 @@
     "@vueuse/core": "^8.1.1",
     "animate.css": "^4.1.1",
     "element-plus": "^2.1.4",
-    "vue": "^3.2.16",
-    "vue-waterfall-plugin-next": "2.1.7"
+    "vue": "^3.2.16"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.18.8",
