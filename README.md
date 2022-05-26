@@ -25,7 +25,7 @@ npm install vue-waterfall-plugin-next
 
 ```javascript
 import { LazyImg, Waterfall } from 'vue-waterfall-plugin-next'
-import 'vue-waterfall-plugin-next/style.css'
+import 'vue-waterfall-plugin-next/dist/style.css'
 ```
 
 ```html
