@@ -1,6 +1,6 @@
 {
   "name": "vue-waterfall-plugin-next",
-  "version": "2.1.8",
+  "version": "2.1.11",
   "license": "UNLICENSED",
   "author": "Yaowen Liu <576079353@qq.com>",
   "main": "./dist/my-lib.umd.js",
@@ -47,9 +47,6 @@
     "vitest": "^0.6.0",
     "vue": "^3.2.16",
     "vue-tsc": "^0.33.2-patch.1"
-  },
-  "eslintConfig": {
-    "extends": "@antfu"
   },
   "respository": {
     "type": "git",

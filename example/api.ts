@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 13:34:56
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-24 14:25:30
+ * @LastEditTime: 2023-02-27 17:52:11
  */
 import type { ViewCard } from '../lib/types/waterfall'
 
@@ -61,24 +61,47 @@ function randomName() {
   return NAMES[getRandomNum(0, 25)]
 }
 
-let start = 100
-export function getList(pageSize = 10) {
-  const end = start + pageSize
-  const list: ViewCard[] = []
-  for (let i = start; i <= end; i++) {
-    const successURL = `https://images.weserv.nl/?url=https://api.mz-moe.cn/img/img${i}.jpg`
-    // const successURL = `https://images.weserv.nl/?url=https://api.mz-moe.cn/img/img${i}.jpg?timestamp=${Date.now()}`
-    const errorURL = 'https://api.mz-moe.cn/img/img00000.jpg'
-    list.push({
-      id: randomID(),
-      star: false,
-      src: {
-        original: Math.random() < 0.95 ? successURL : errorURL,
-      },
-      backgroundColor: randomColor(),
-      name: randomName(),
+// let start = 100
+// export function getList(pageSize = 10) {
+//   const end = start + pageSize
+//   const list: ViewCard[] = []
+//   for (let i = start; i <= end; i++) {
+//     const successURL = `https://api.mz-moe.cn/img/img${i}.jpg`
+//     // const successURL = `https://images.weserv.nl/?url=https://api.mz-moe.cn/img/img${i}.jpg?timestamp=${Date.now()}`
+//     const errorURL = 'https://api.mz-moe.cn/img/img00000.jpg'
+//     list.push({
+//       id: randomID(),
+//       star: false,
+//       src: {
+//         original: Math.random() < 0.95 ? successURL : errorURL,
+//       },
+//       backgroundColor: randomColor(),
+//       name: randomName(),
+//     })
+//   }
+//   start = end + 1
+//   return list
+// }
+
+const website = 'https://makemesurprise.com'
+// const website = 'https://www.getphotoblanket.com';
+
+export const getList = ({ page = 1, pageSize = 20 }) => {
+  const url = `${website}/products.json?page=${page}&limit=${pageSize}`
+  return fetch(url)
+    .then(res => res.json())
+    .then(res => res.products).then((res) => {
+      return res.map((item: any) => {
+        return {
+          id: randomID(),
+          star: false,
+          price: item.variants[0].price,
+          src: {
+            original: item.images[0].src,
+          },
+          backgroundColor: randomColor(),
+          name: item.title,
+        }
+      })
     })
-  }
-  start = end + 1
-  return list
 }
