@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 10:20:21
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-23 17:20:23
+ * @LastEditTime: 2023-03-01 16:28:36
 -->
 <template>
   <div ref="waterfallWrapper" class="waterfall-list" :style="{ height: `${wrapperHeight}px` }">
@@ -125,6 +125,7 @@ export default defineComponent({
       colWidth,
       cols,
       offsetX,
+      waterfallWrapper,
     )
 
     // 1s内最多执行一次排版，减少性能开销

@@ -2,13 +2,13 @@
  * @Author: Yaowen Liu
  * @Date: 2022-03-08 15:04:02
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-24 12:10:36
+ * @LastEditTime: 2023-03-01 16:38:44
  */
 import type { Ref } from 'vue'
 import { ref } from 'vue'
 import { addClass, hasClass, prefixStyle } from '../utils/dom'
 import type { WaterfallProps } from '../types/waterfall'
-import type { CssStyleObject } from '../types/util'
+import type { CssStyleObject, Nullable } from '../types/util'
 
 const transform = prefixStyle('transform')
 const duration = prefixStyle('animation-duration')
@@ -16,7 +16,7 @@ const delay = prefixStyle('animation-delay')
 const transition = prefixStyle('transition')
 const fillMode = prefixStyle('animation-fill-mode')
 
-export function useLayout(props: WaterfallProps, colWidth: Ref<number>, cols: Ref<number>, offsetX: Ref<number>) {
+export function useLayout(props: WaterfallProps, colWidth: Ref<number>, cols: Ref<number>, offsetX: Ref<number>, waterfallWrapper: Ref<Nullable<HTMLElement>>) {
   const posY = ref<number[]>([])
   const wrapperHeight = ref(0)
 
@@ -39,19 +39,21 @@ export function useLayout(props: WaterfallProps, colWidth: Ref<number>, cols: Re
     // 初始化y集合
     initY()
 
+    // 构造列表
+    const items: HTMLElement[] = []
+    if (waterfallWrapper && waterfallWrapper.value) {
+      waterfallWrapper.value.childNodes.forEach((el: any) => {
+        if (el!.className === 'waterfall-item')
+          items.push(el)
+      })
+    }
+
     // 获取节点
-    const items = document.querySelectorAll('.waterfall-item') as NodeListOf<HTMLElement>
     if (items.length === 0) return false
 
     // 遍历节点
     for (let i = 0; i < items.length; i++) {
       const curItem = items[i] as HTMLElement
-
-      // curItem.addEventListener('transitionend', handle, false)
-      // function handle() {
-      //   console.log('css事件过渡效果完成')
-      // }
-
       // 最小的y值
       const minY = Math.min.apply(null, posY.value)
       // 最小y的下标
@@ -73,7 +75,7 @@ export function useLayout(props: WaterfallProps, colWidth: Ref<number>, cols: Re
       // 添加入场动画
       animation(curItem, () => {
         // 添加动画时间
-        if (transition) style[transition] = '.3s'
+        if (transition) style[transition] = 'transform .3s'
       })
     }
 

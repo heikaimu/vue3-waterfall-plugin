@@ -97,21 +97,17 @@ export default class Lazy {
 
     loadImage(src)
       .then((image) => {
-        // parent
-        // const parent = el.parentElement as HTMLElement
-        // const pWidth = parent.clientWidth
-        // const pHeight = (pWidth / width) * height
-        // const style = parent.style as CssStyleObject
-        // style.height = `${pHeight}px`
-        // 先清空，避免加载图在修改尺寸后被拉伸
+        // 修改容器
+        const { width, height } = image
+        const ratio = height / width
+        const lazyBox = el.parentNode!.parentNode as HTMLElement
+        lazyBox.style.paddingBottom = `${ratio * 100}%`
+
+        // 设置图片
         el.setAttribute('lazy', LifecycleEnum.LOADED)
         el.removeAttribute('src')
         el.setAttribute('src', src)
-        const { width, height } = image
-        const curHeight = (el.width / width) * height
-        el.height = curHeight
-        const style = el.style as CssStyleObject
-        style.height = `${curHeight}px`
+
         callback()
       })
       .catch(() => {
