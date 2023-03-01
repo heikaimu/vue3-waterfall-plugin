@@ -1,7 +1,7 @@
 <!--
  * @Date: 2023-03-01 15:43:25
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-03-01 15:56:28
+ * @LastEditTime: 2023-03-01 16:51:43
  * @FilePath: /vue3-waterfall/example/components/WaterfallList.vue
 -->
 <template>
@@ -58,7 +58,7 @@ import type { PropType } from 'vue'
 import { onMounted, ref } from 'vue'
 import { LazyImg, Waterfall } from '../../lib/index'
 // import { LazyImg, Waterfall } from 'vue-waterfall-plugin-next'
-// import 'vue-waterfall-plugin-next/style.css'
+// import 'vue-waterfall-plugin-next/dist/style.css'
 import type { ViewCard } from '../../lib/types/waterfall'
 import { getList } from '../api'
 
