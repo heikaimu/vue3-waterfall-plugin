@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-18 16:22:04
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-03-01 16:49:53
+ * @LastEditTime: 2023-03-29 10:27:01
 -->
 
 # Vue3 瀑布流组件
@@ -33,7 +33,7 @@ import 'vue-waterfall-plugin-next/dist/style.css'
   <template #item="{ item, url, index }">
     <div class="card">
       <LazyImg :url="url" />
-      <p class="text">这是内容</p>
+      <p class="text">这是具体内容</p>
     </div>
   </template>
 </Waterfall>
