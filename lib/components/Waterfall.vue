@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 10:20:21
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-03-01 16:28:36
+ * @LastEditTime: 2023-04-10 12:38:55
 -->
 <template>
   <div ref="waterfallWrapper" class="waterfall-list" :style="{ height: `${wrapperHeight}px` }">
@@ -100,6 +100,10 @@ export default defineComponent({
       type: Object,
       default: () => { },
     },
+    crossOrigin: {
+      type: Boolean,
+      default: true,
+    },
     delay: {
       type: Number,
       default: 300,
@@ -107,7 +111,7 @@ export default defineComponent({
   },
 
   setup(props) {
-    const lazy = new Lazy(props.lazyload, props.loadProps)
+    const lazy = new Lazy(props.lazyload, props.loadProps, props.crossOrigin)
     provide('lazy', lazy)
 
     // 容器块信息

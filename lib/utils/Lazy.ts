@@ -19,6 +19,7 @@ const DEFAULT_ERROR = ''
 
 export default class Lazy {
   lazyActive = true // 是否开启懒加载
+  crossOrigin = true // 开启跨域
   options: LazyOptions = {
     loading: DEFAULT_LOADING,
     error: DEFAULT_ERROR,
@@ -28,8 +29,9 @@ export default class Lazy {
 
   _images = new WeakMap()
 
-  constructor(flag = true, options: LazyOptions) {
+  constructor(flag = true, options: LazyOptions, crossOrigin = true) {
     this.lazyActive = flag
+    this.crossOrigin = crossOrigin
     this.config(options)
   }
 
@@ -61,7 +63,7 @@ export default class Lazy {
     const lazy = el.getAttribute('lazy')
     const src = el.getAttribute('src')
     if (lazy && lazy === LifecycleEnum.LOADED && src) {
-      loadImage(src).then((image) => {
+      loadImage(src, this.crossOrigin).then((image) => {
         const { width, height } = image
         const curHeight = (el.width / width) * height
         el.height = curHeight
@@ -95,7 +97,7 @@ export default class Lazy {
     if (preSrc === src)
       return
 
-    loadImage(src)
+    loadImage(src, this.crossOrigin)
       .then((image) => {
         // 修改容器
         const { width, height } = image

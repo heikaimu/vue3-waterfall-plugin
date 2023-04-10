@@ -2,7 +2,7 @@
  * @Author: Yaowen Liu
  * @Date: 2022-03-18 14:11:45
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2022-03-23 16:30:06
+ * @LastEditTime: 2023-04-10 12:37:21
  */
 export interface LazyOptions {
   error?: string

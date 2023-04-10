@@ -1,7 +1,7 @@
 <!--
  * @Date: 2023-03-01 15:43:25
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-03-01 16:51:43
+ * @LastEditTime: 2023-04-10 12:45:03
  * @FilePath: /vue3-waterfall/example/components/WaterfallList.vue
 -->
 <template>
@@ -20,6 +20,7 @@
       :animation-delay="options.animationDelay"
       :lazyload="options.lazyload"
       :load-props="options.loadProps"
+      :cross-origin="options.crossOrigin"
     >
       <template #item="{ item, url, index }">
         <div class="bg-gray-900 rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-linear hover:shadow-lg hover:shadow-gray-600 group" @click="handleClick(item)">

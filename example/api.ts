@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 13:34:56
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-03-01 16:43:18
+ * @LastEditTime: 2023-04-10 12:42:14
  */
 // import type { ViewCard } from '../lib/types/waterfall'
 
@@ -83,7 +83,7 @@ function randomColor() {
 //   return list
 // }
 
-const website = 'https://makemesurprise.com'
+const website = 'https://www.getphotoblanket.com'
 // const website = 'https://www.getphotoblanket.com';
 
 export const getList = ({ page = 1, pageSize = 20 }) => {
