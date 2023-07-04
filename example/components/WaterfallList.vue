@@ -1,7 +1,7 @@
 <!--
  * @Date: 2023-03-01 15:43:25
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-04-10 12:45:03
+ * @LastEditTime: 2023-07-04 09:48:40
  * @FilePath: /vue3-waterfall/example/components/WaterfallList.vue
 -->
 <template>
@@ -25,7 +25,7 @@
       <template #item="{ item, url, index }">
         <div class="bg-gray-900 rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-linear hover:shadow-lg hover:shadow-gray-600 group" @click="handleClick(item)">
           <div class="overflow-hidden">
-            <LazyImg :url="url" class="cursor-pointer transition-all duration-300 ease-linear group-hover:scale-105" />
+            <LazyImg :url="url" class="cursor-pointer transition-all duration-300 ease-linear group-hover:scale-105" @load="imageLoad(url)" />
           </div>
           <div class="px-4 pt-2 pb-4 border-t border-t-gray-800">
             <h2 class="pb-4 text-gray-50 group-hover:text-yellow-300">
@@ -106,6 +106,10 @@ function handleDelete(item: ViewCard, index: number) {
 
 function handleClick(item: ViewCard) {
   emits('cardClick', item)
+}
+
+function imageLoad(url: string) {
+  console.log(`${url}: 加载完成`)
 }
 </script>
 

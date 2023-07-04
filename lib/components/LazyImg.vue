@@ -2,12 +2,12 @@
  * @Author: Yaowen Liu
  * @Date: 2022-03-09 10:29:50
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-03-01 15:38:15
+ * @LastEditTime: 2023-07-04 09:47:49
 -->
 <template>
   <div class="lazy__box">
     <div class="lazy__resource">
-      <img ref="lazyRef" class="lazy__img">
+      <img ref="lazyRef" class="lazy__img" @load="imageLoad">
     </div>
   </div>
 </template>
@@ -26,7 +26,7 @@ export default defineComponent({
     },
   },
 
-  setup(props) {
+  setup(props, ctx) {
     const imgLoaded = inject('imgLoaded') as () => void
     const lazy = inject('lazy') as Lazy
     const lazyRef = ref<Nullable<HTMLImageElement>>(null)
@@ -55,8 +55,13 @@ export default defineComponent({
       lazy.unmount(lazyRef.value)
     }
 
+    function imageLoad() {
+      ctx.emit('load')
+    }
+
     return {
       lazyRef,
+      imageLoad,
     }
   },
 })

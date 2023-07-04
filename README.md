@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-18 16:22:04
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-04-10 12:47:23
+ * @LastEditTime: 2023-07-04 09:52:29
 -->
 
 # Vue3 瀑布流组件
@@ -73,6 +73,9 @@ data: {
 | `lazyload`          | `Boolean` | `true`        | 是否开启懒加载 |
 | `crossOrigin`       | `Boolean` | `true`        | 图片加载是否开启跨域 |
 | `delay`             | `Number`  | `300`         | 布局刷新的防抖时间，默认 `300ms` 内没有再次触发才刷新布局。（图片加载完成；容器大小、`list`、`width`、`gutter`、`hasAroundGutter`变化时均会触发刷新） |
+
+#### `方法`
+`LazyImg`组件添加了`load`回调方法
 
 `breakpoints`
 ```javascript
