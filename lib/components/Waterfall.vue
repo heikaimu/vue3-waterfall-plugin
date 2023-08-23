@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 10:20:21
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-04-10 12:38:55
+ * @LastEditTime: 2023-08-23 13:19:44
 -->
 <template>
   <div ref="waterfallWrapper" class="waterfall-list" :style="{ height: `${wrapperHeight}px` }">
@@ -174,6 +174,7 @@ export default defineComponent({
       wrapperHeight,
       getRenderURL,
       getKey,
+      renderer,
     }
   },
 })

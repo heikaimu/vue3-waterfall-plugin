@@ -1,7 +1,7 @@
 <!--
  * @Date: 2023-03-01 15:43:25
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-07-04 09:48:40
+ * @LastEditTime: 2023-08-23 13:23:41
  * @FilePath: /vue3-waterfall/example/components/WaterfallList.vue
 -->
 <template>
@@ -109,7 +109,7 @@ function handleClick(item: ViewCard) {
 }
 
 function imageLoad(url: string) {
-  console.log(`${url}: 加载完成`)
+  // console.log(`${url}: 加载完成`)
 }
 </script>
 

@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-18 16:22:04
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-07-04 09:52:29
+ * @LastEditTime: 2023-08-23 13:47:55
 -->
 
 # Vue3 瀑布流组件
@@ -76,6 +76,18 @@ data: {
 
 #### `方法`
 `LazyImg`组件添加了`load`回调方法
+
+#### `外部函数`
+`WaterFall`组件向外暴露了一个`renderer`函数，可以直接调用，该方法可以主动重绘列表，使用其他懒加载图片组件的回调函数里可以调用这个renderer来重绘。
+
+使用方法
+
+```html
+<Waterfall ref="waterfall"></Waterfall>
+
+const waterfall = ref(null)
+waterfall.value.renderer()
+```
 
 `breakpoints`
 ```javascript
