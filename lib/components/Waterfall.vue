@@ -141,7 +141,7 @@ export default defineComponent({
     watch(
       () => [wrapperWidth, colWidth, props.list],
       () => {
-        renderer()
+        if (wrapperWidth.value > 0) renderer()
       },
       { deep: true },
     )
