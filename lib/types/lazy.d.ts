@@ -2,8 +2,10 @@
  * @Author: Yaowen Liu
  * @Date: 2022-03-18 14:11:45
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-04-10 12:37:21
+ * @LastEditTime: 2023-09-21 09:12:13
  */
+export type CallbackFunction = (value: boolean) => void
+
 export interface LazyOptions {
   error?: string
   loading?: string
@@ -28,7 +30,7 @@ export default class Lazy {
   config(options = {}): void
 
   // mount
-  mount(el: HTMLImageElement, binding: string | ValueFormatterObject, callback: () => void): void
+  mount(el: HTMLImageElement, binding: string | ValueFormatterObject, callback: CallbackFunction): void
 
   // update
   // update(el, binding, callback) {
@@ -53,7 +55,7 @@ export default class Lazy {
    * @param {*} callback - 完成的回调函数，通知组件刷新布局
    * @returns
    */
-  _setImageSrc(el: HTMLImageElement, src: string, callback: () => void, error?: string): void
+  _setImageSrc(el: HTMLImageElement, src: string, callback: CallbackFunction, error?: string): void
 
   _isOpenLazy(): boolean
 
@@ -66,7 +68,7 @@ export default class Lazy {
    * @param {*} error - 错误图片
    * @param {*} callback - 完成的回调函数，通知组件刷新布局
    */
-  _initIntersectionObserver(el: HTMLImageElement, src: string, callback: () => void, error?: string): void
+  _initIntersectionObserver(el: HTMLImageElement, src: string, callback: CallbackFunction, error?: string): void
 
   // 格式化参数
   _valueFormatter(value: ValueFormatterObject | string): ValueFormatterObject

@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-18 16:22:04
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-08-23 13:47:55
+ * @LastEditTime: 2023-09-21 09:29:02
 -->
 
 # Vue3 瀑布流组件
@@ -74,8 +74,13 @@ data: {
 | `crossOrigin`       | `Boolean` | `true`        | 图片加载是否开启跨域 |
 | `delay`             | `Number`  | `300`         | 布局刷新的防抖时间，默认 `300ms` 内没有再次触发才刷新布局。（图片加载完成；容器大小、`list`、`width`、`gutter`、`hasAroundGutter`变化时均会触发刷新） |
 
-#### `方法`
-`LazyImg`组件添加了`load`回调方法
+#### `LazyImg` 方法
+| 方法名字   | 返回值类型 | 描述 |
+| --------- | --------- | -------------- |
+| `load`    | `string`  | img标签的load函数 |
+| `success` | `string`  | 图片加载成功 |
+| `error`   | `string`  | 图片加载失败 |
+
 
 #### `外部函数`
 `WaterFall`组件向外暴露了一个`renderer`函数，可以直接调用，该方法可以主动重绘列表，使用其他懒加载图片组件的回调函数里可以调用这个renderer来重绘。

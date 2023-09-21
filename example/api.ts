@@ -4,7 +4,7 @@
  * @Author: Yaowen Liu
  * @Date: 2021-10-14 13:34:56
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-04-10 12:42:14
+ * @LastEditTime: 2023-09-21 09:23:25
  */
 // import type { ViewCard } from '../lib/types/waterfall'
 
@@ -97,7 +97,7 @@ export const getList = ({ page = 1, pageSize = 20 }) => {
           star: false,
           price: item.variants[0].price,
           src: {
-            original: item.images[0].src,
+            original: Math.random() > 0.1 ? item.images[0].src : 'https://www.example.com/non-existent-image.jpg',
           },
           backgroundColor: randomColor(),
           name: item.title,

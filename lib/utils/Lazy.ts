@@ -1,4 +1,4 @@
-import type { LazyOptions, ValueFormatterObject } from '../types/lazy'
+import type { CallbackFunction, LazyOptions, ValueFormatterObject } from '../types/lazy'
 import type { CssStyleObject } from './../types/util.d'
 import { assign, hasIntersectionObserver, isObject } from './util'
 import { loadImage } from './loader'
@@ -40,7 +40,7 @@ export default class Lazy {
   }
 
   // mount
-  mount(el: HTMLImageElement, binding: string | ValueFormatterObject, callback: () => void): void {
+  mount(el: HTMLImageElement, binding: string | ValueFormatterObject, callback: CallbackFunction): void {
     const { src, loading, error } = this._valueFormatter(binding)
     el.setAttribute('lazy', LifecycleEnum.LOADING)
     el.setAttribute('src', loading || DEFAULT_LOADING)
@@ -89,7 +89,7 @@ export default class Lazy {
    * @param {*} callback - 完成的回调函数，通知组件刷新布局
    * @returns
    */
-  _setImageSrc(el: HTMLImageElement, src: string, callback: () => void, error?: string): void {
+  _setImageSrc(el: HTMLImageElement, src: string, callback: CallbackFunction, error?: string): void {
     if (!src)
       return
 
@@ -110,7 +110,7 @@ export default class Lazy {
         el.removeAttribute('src')
         el.setAttribute('src', src)
 
-        callback()
+        callback(true)
       })
       .catch(() => {
         const imgItem = this._realObserver(el)
@@ -118,11 +118,11 @@ export default class Lazy {
         if (error) {
           el.setAttribute('lazy', LifecycleEnum.ERROR)
           el.setAttribute('src', error)
+          callback(false)
         }
         this._log(() => {
           throw new Error(`Image failed to load!And failed src was: ${src} `)
         })
-        callback()
       })
   }
 
@@ -139,7 +139,7 @@ export default class Lazy {
    * @param {*} error - 错误图片
    * @param {*} callback - 完成的回调函数，通知组件刷新布局
    */
-  _initIntersectionObserver(el: HTMLImageElement, src: string, callback: () => void, error?: string): void {
+  _initIntersectionObserver(el: HTMLImageElement, src: string, callback: CallbackFunction, error?: string): void {
     const observerOptions = this.options.observerOptions
     this._images.set(
       el,

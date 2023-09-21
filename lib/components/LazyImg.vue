@@ -2,7 +2,7 @@
  * @Author: Yaowen Liu
  * @Date: 2022-03-09 10:29:50
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-07-04 09:47:49
+ * @LastEditTime: 2023-09-21 09:24:00
 -->
 <template>
   <div class="lazy__box">
@@ -13,7 +13,6 @@
 </template>
 
 <script lang="ts">
-// import type { Ref } from 'vue'
 import { defineComponent, inject, onMounted, onUnmounted, ref } from 'vue'
 import type Lazy from '../types/lazy'
 import type { Nullable } from '../types/util'
@@ -43,8 +42,12 @@ export default defineComponent({
       if (!lazyRef.value)
         return
 
-      lazy.mount(lazyRef.value, props.url, () => {
+      lazy.mount(lazyRef.value, props.url, (status) => {
         imgLoaded()
+        if (status)
+          ctx.emit('success', props.url)
+        else
+          ctx.emit('error', props.url)
       })
     }
 
@@ -56,7 +59,7 @@ export default defineComponent({
     }
 
     function imageLoad() {
-      ctx.emit('load')
+      ctx.emit('load', props.url)
     }
 
     return {
