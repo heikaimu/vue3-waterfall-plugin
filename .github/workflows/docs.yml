@@ -3,7 +3,7 @@ name: Build Page
 on:
   push:
     branches:
-      - main  # 替换成你的主要分支
+      - master  # 替换成你的主要分支
 
 jobs:
   build:
