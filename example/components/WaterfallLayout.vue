@@ -23,7 +23,7 @@
 
 <style scoped>
 .page-nav {
-  padding: 10px;
+  padding: 8px;
   background-color: #222222;
 }
 
