@@ -11,7 +11,7 @@
 
 vue3 瀑布流插件，支持 PC 和移动端，支持 animate 的所有动画效果，支持图片懒加载
 
-[在线演示地址](https://vue3-waterfall.netlify.app/)
+[在线演示地址](https://heikaimu.github.io/vue3-waterfall-plugin/#/page-a)
 
 [vue2 版本](https://github.com/heikaimu/vue-waterfall-plugin)
 
