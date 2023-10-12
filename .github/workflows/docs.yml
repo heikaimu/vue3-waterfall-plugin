@@ -16,7 +16,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: 14  # 替换成你的 Node.js 版本
+        node-version: 16  # 替换成你的 Node.js 版本
 
     - name: Install Dependencies
       run: npm install
