@@ -18,12 +18,14 @@ specifiers:
   vite: ^2.6.4
   vitest: ^0.6.0
   vue: ^3.2.16
+  vue-router: '4'
   vue-tsc: ^0.33.2-patch.1
   vue-waterfall-plugin-next: 2.2.0
 
 dependencies:
   animate.css: 4.1.1
   element-plus: 2.1.4_djas2fg66x7vziiseaaojpxgmy
+  vue-router: 4.2.5_vue@3.2.31
   vue-waterfall-plugin-next: 2.2.0_djas2fg66x7vziiseaaojpxgmy
 
 devDependencies:
@@ -561,6 +563,10 @@ packages:
     dependencies:
       '@vue/compiler-dom': 3.2.31
       '@vue/shared': 3.2.31
+
+  /@vue/devtools-api/6.5.1:
+    resolution: {integrity: sha512-+KpckaAQyfbvshdDW5xQylLni1asvNSGme1JFs8I1+/H5pHEhqUKMEQD/qn3Nx5+/nycBq11qAEi8lk+LXI2dA==}
+    dev: false
 
   /@vue/reactivity-transform/3.2.31:
     resolution: {integrity: sha512-uS4l4z/W7wXdI+Va5pgVxBJ345wyGFKvpPYtdSgvfJfX/x2Ymm6ophQlXXB6acqGHtXuBqNyyO3zVp9b1r0MOA==}
@@ -3318,6 +3324,15 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /vue-router/4.2.5_vue@3.2.31:
+    resolution: {integrity: sha512-DIUpKcyg4+PTQKfFPX88UWhlagBEBEfJ5A8XDXRJLUnZOvcpMF8o/dnL90vpVkGaPbjvXazV/rC1qBKrZlFugw==}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      '@vue/devtools-api': 6.5.1
+      vue: 3.2.31
+    dev: false
 
   /vue-tsc/0.33.2-patch.1_typescript@4.6.2:
     resolution: {integrity: sha512-Wr1b5Dt/fqJejBk9rHHCDhSbt/sU0pekUhmyupeKbAWw9eT2DTPn1od6N3dV9jdjGitqDESVRFsw6R1hSLdAQA==}

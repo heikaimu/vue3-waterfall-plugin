@@ -5,9 +5,9 @@
  * @LastEditTime: 2023-03-01 15:41:17
 -->
 <template>
-  <WaterfallApp />
+  <WaterfallLayout />
 </template>
 
 <script setup lang="ts">
-import WaterfallApp from './components/WaterfallApp.vue'
+import WaterfallLayout from './components/WaterfallLayout.vue'
 </script>
