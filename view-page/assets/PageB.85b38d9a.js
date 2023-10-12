@@ -1,0 +1,1 @@
+import{_ as e,b as _,e as t}from"./index.b94733ac.js";const a={},c={class:"page-b-content"};function s(n,o){return _(),t("div",c," \u6D4B\u8BD5\u8DEF\u7531\u6548\u679C ")}var d=e(a,[["render",s],["__scopeId","data-v-55e85d33"]]);export{d as default};

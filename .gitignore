@@ -1,5 +1,4 @@
 node_modules
-#netlify-page
 .DS_Store
 dist
 dist-ssr
