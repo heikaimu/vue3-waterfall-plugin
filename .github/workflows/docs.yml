@@ -1,0 +1,25 @@
+name: Build Page
+
+on:
+  push:
+    branches:
+      - main  # 替换成你的主要分支
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14  # 替换成你的 Node.js 版本
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Build Page
+      run: npm run build:page

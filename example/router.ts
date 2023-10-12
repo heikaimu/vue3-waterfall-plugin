@@ -5,6 +5,10 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes: [
     {
+      path: '/',
+      redirect: '/page-a',
+    },
+    {
       path: '/page-a',
       name: 'PageA',
       component: () => import('./components/PageA.vue'),
