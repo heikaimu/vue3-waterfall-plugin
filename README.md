@@ -94,18 +94,21 @@ const waterfall = ref(null)
 waterfall.value.renderer()
 ```
 
-`breakpoints`
+`breakpoints`默认值，当此属性生效时，width失效
 ```javascript
 breakpoints: {
-  1200: { //当屏幕宽度小于等于1200
-    rowPerView: 4,
-  },
-  800: { //当屏幕宽度小于等于800
+  1200: {
+    // when wrapper width < 1200
     rowPerView: 3,
   },
-  500: { //当屏幕宽度小于等于500
+  800: {
+    // when wrapper width < 800
     rowPerView: 2,
-  }
+  },
+  500: {
+    // when wrapper width < 500
+    rowPerView: 1,
+  },
 }
 ```
 
