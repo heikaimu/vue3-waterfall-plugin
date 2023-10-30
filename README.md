@@ -60,8 +60,8 @@ data: {
 | `list`              | `Array`   | []          | 列表数据 |
 | `rowKey`           | `String`  | `id`          | 数据唯一的字段，比如列表里面的`id`, 如果要删除卡片，该字段为必填 |
 | `imgSelector`       | `String`  | `src`         | 图片字段选择器，如果层级较深，使用 `xxx.xxx.xxx` 方式 |
-| `width`             | `Number`  | `200`         | 卡片在 PC 上的宽度 |
-| `breakpoints`       | `Object`  | `breakpoints` | 自定义行显示个数，主要用于对移动端的适配 |
+| `width`             | `Number`  | `200`         | 卡片在 PC 上的宽度, 与breakpoints一样可以确定卡片的宽度以及每行个数, 但**breakpoints优先级高于width** |
+| `breakpoints`       | `Object`  | {<br>1200:{rowPerView:3},<br>800:{rowPerView:2},<br>500:{rowPerView:1}<br>} | 类似css的@media, 定义不同容器宽度下每行卡片个数，主要用于对移动端的适配 |
 | `gutter`            | `Number`  | `10`          | 卡片之间的间隙 |
 | `hasAroundGutter`   | `Boolean` | `true`        | 容器四周是否有 `gutter` 边距 |
 | `animationPrefix`   | `String`  | `animate__animated` | `animate.css` 的动画绑定 `className`，默认的是 `4.x.x` 版本，如果想使用老版本，只需要改成 `animated` 即可 |
