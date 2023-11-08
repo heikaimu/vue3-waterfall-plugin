@@ -24,6 +24,15 @@ jobs:
 
     - name: Install Dependencies
       run: npm install
+      # 安装依赖
+
+    - name: Debug Current Directory
+      run: pwd
+      # 查看目录
+
+    - name: Check Directory Permissions
+      run: ls -l
+      # 查看权限
 
     - name: Build Page
       run: npm run build:page
