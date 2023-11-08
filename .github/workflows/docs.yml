@@ -18,6 +18,10 @@ jobs:
       with:
         node-version: 16  # 使用 Node.js 16
 
+    - name: Clear Node.js Cache
+      run: npm cache clean --force
+      # 清除npm缓存
+
     - name: Install Dependencies
       run: npm install
 
