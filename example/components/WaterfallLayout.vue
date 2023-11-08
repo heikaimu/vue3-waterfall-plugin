@@ -2,10 +2,10 @@
   <div>
     <nav class="page-nav">
       <router-link to="/page-a">
-        基础API
+        基础API展示
       </router-link>
       <router-link to="/page-b">
-        数据分页
+        数据分页展示
       </router-link>
     </nav>
 
