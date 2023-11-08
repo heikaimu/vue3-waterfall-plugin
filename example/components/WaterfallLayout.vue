@@ -5,7 +5,7 @@
         基础API
       </router-link>
       <router-link to="/page-b">
-        列表数据变更
+        数据分页
       </router-link>
     </nav>
 
