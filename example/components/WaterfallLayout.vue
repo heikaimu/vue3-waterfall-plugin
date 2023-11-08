@@ -2,10 +2,10 @@
   <div>
     <nav class="page-nav">
       <router-link to="/page-a">
-        Page A
+        基础API
       </router-link>
       <router-link to="/page-b">
-        Page B
+        列表数据变更
       </router-link>
     </nav>
 
