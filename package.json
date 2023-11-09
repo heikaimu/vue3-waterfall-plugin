@@ -21,7 +21,7 @@
     "animate.css": "^4.1.1",
     "element-plus": "^2.1.4",
     "vue-router": "4",
-    "vue-waterfall-plugin-next": "2.2.0"
+    "vue-waterfall-plugin-next": "^2.2.4"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.18.8",
