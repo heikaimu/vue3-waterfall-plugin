@@ -39,9 +39,11 @@
 </template>
 
 <script setup lang="ts">
-import type { ViewCard } from 'lib/types/waterfall'
 import { onMounted, reactive, ref } from 'vue'
+import type { ViewCard } from '../../lib/types/waterfall'
 import { LazyImg, Waterfall } from '../../lib/index'
+// import { LazyImg, Waterfall } from 'vue-waterfall-plugin-next'
+// import 'vue-waterfall-plugin-next/dist/style.css'
 import { getList } from '../api'
 import loading from '../assets/loading.png'
 import error from '../assets/error.png'

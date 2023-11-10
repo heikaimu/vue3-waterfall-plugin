@@ -34,9 +34,11 @@ if (target === 'npm') {
 
 export default defineConfig({
   base: './',
-  build: { ...buildConfig },
   plugins: [vue()],
   server: {
-    open: true,
+    hmr: true,
+    port: 3000,
+    host: '0.0.0.0',
   },
+  build: { ...buildConfig },
 })

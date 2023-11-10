@@ -20,13 +20,13 @@ specifiers:
   vue: 3.2.16
   vue-router: '4'
   vue-tsc: 0.33.2-patch.1
-  vue-waterfall-plugin-next: 2.2.4
+  vue-waterfall-plugin-next: 2.2.5
 
 dependencies:
   animate.css: 4.1.1
   element-plus: 2.1.4_h2twyz2hbfhsfeyihhmkiddtxu
   vue-router: 4.2.5_vue@3.2.16
-  vue-waterfall-plugin-next: 2.2.4_h2twyz2hbfhsfeyihhmkiddtxu
+  vue-waterfall-plugin-next: 2.2.5_h2twyz2hbfhsfeyihhmkiddtxu
 
 devDependencies:
   '@antfu/eslint-config': 0.18.8_tfpafavad6dwe253o5stfcfh4i
@@ -3982,6 +3982,19 @@ packages:
       animate.css: 4.1.1
       element-plus: 2.1.4_h2twyz2hbfhsfeyihhmkiddtxu
       vue-waterfall-plugin-next: 2.2.0_h2twyz2hbfhsfeyihhmkiddtxu
+    transitivePeerDependencies:
+      - '@types/lodash-es'
+      - '@vue/composition-api'
+      - vue
+    dev: false
+
+  /vue-waterfall-plugin-next/2.2.5_h2twyz2hbfhsfeyihhmkiddtxu:
+    resolution: {integrity: sha512-CVOjtmuYxilks/OWSlCDfWLDIurF1t0VMPXI5QRJ2A/To5XewxQvzGeRGl5nxSATwaUqknFZ740ySAbDNIrtow==}
+    dependencies:
+      animate.css: 4.1.1
+      element-plus: 2.1.4_h2twyz2hbfhsfeyihhmkiddtxu
+      vue-router: 4.2.5_vue@3.2.16
+      vue-waterfall-plugin-next: 2.2.4_h2twyz2hbfhsfeyihhmkiddtxu
     transitivePeerDependencies:
       - '@types/lodash-es'
       - '@vue/composition-api'

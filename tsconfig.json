@@ -17,11 +17,8 @@
     "types": [
       "vitest/importMeta"
     ],
-    "paths": {
-      "@/*": ["src/*"]
-    },
     "outDir": "dist",
-    "declaration": false
+    "declaration": true
   },
   "exclude": ["dist", "node_modules", "example"]
 }
