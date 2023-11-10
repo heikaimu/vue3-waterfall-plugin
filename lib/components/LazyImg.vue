@@ -28,7 +28,7 @@ export default defineComponent({
   setup(props, ctx) {
     const imgLoaded = inject('imgLoaded') as () => void
     const lazy = inject('lazy') as Lazy
-    const lazyRef = ref<Nullable<HTMLImageElement>>(null)
+    const lazyRef = ref<Nullable<any>>(null)
 
     onMounted(() => {
       render()

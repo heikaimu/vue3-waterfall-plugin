@@ -21,7 +21,7 @@
       "@/*": ["src/*"]
     },
     "outDir": "dist",
-    "declaration": true
+    "declaration": false
   },
   "exclude": ["dist", "node_modules", "example"]
 }

@@ -12,7 +12,7 @@ import type { Nullable } from '../types/util'
 
 export function useCalculateCols(props: WaterfallProps) {
   const wrapperWidth = ref<number>(0)
-  const waterfallWrapper = ref<Nullable<HTMLElement>>(null)
+  const waterfallWrapper = ref<Nullable<any>>(null)
 
   useResizeObserver(waterfallWrapper, (entries) => {
     const entry = entries[0]
