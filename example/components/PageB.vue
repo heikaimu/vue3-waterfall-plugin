@@ -9,12 +9,8 @@
       :breakpoints="options.breakpoints"
       :img-selector="options.imgSelector"
       :background-color="options.backgroundColor"
-      :animation-effect="options.animationEffect"
-      :animation-duration="options.animationDuration"
-      :animation-delay="options.animationDelay"
       :lazyload="options.lazyload"
       :load-props="options.loadProps"
-      :cross-origin="options.crossOrigin"
     >
       <template #item="{ item, url }">
         <div class="bg-gray-900 rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-linear hover:shadow-lg hover:shadow-gray-600 group">
