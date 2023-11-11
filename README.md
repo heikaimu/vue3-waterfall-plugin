@@ -64,7 +64,7 @@ data: {
 | `breakpoints`       | `Object`  | {<br>1200:{rowPerView:3},<br>800:{rowPerView:2},<br>500:{rowPerView:1}<br>} | 类似css的@media, 定义不同容器宽度下每行卡片个数，主要用于对移动端的适配 |
 | `gutter`            | `Number`  | `10`          | 卡片之间的间隙 |
 | `hasAroundGutter`   | `Boolean` | `true`        | 容器四周是否有 `gutter` 边距 |
-| `animationPrefix`   | `String`  | `animate__animated` | `animate.css` 的动画绑定 `className`，默认的是 `4.x.x` 版本，如果想使用老版本，只需要改成 `animated` 即可 |
+| `animationPrefix`   | `String`  | `animate__animated` | `animate.css` 的动画绑定 `className`，默认的是 `4.x.x` 版本，如果想使用老版本，只需要改成 `animated` 即可，如果都不引入，需要自行添加`animate__animated`样式见下文 |
 | `animationEffect`   | `String`  | `fadeIn`      | 卡片入场动画，默认只有 `fadeIn`，引入 `animation.css` 后可使用其他动画 |
 | `animationDuration` | `Number`  | `1000`        | 动画执行时间（单位毫秒）|
 | `animationDelay`    | `Number`  | `300`         | 动画延迟（单位毫秒）|
@@ -73,6 +73,14 @@ data: {
 | `lazyload`          | `Boolean` | `true`        | 是否开启懒加载 |
 | `crossOrigin`       | `Boolean` | `true`        | 图片加载是否开启跨域 |
 | `delay`             | `Number`  | `300`         | 布局刷新的防抖时间，默认 `300ms` 内没有再次触发才刷新布局。（图片加载完成；容器大小、`list`、`width`、`gutter`、`hasAroundGutter`变化时均会触发刷新） |
+
+`animate__animated`样式
+```css
+.animate__animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+```
 
 #### `LazyImg` 方法
 | 方法名字   | 返回值类型 | 描述 |
