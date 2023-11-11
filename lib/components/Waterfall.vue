@@ -26,6 +26,7 @@ import { defineComponent, provide, ref, watch } from 'vue'
 import { useDebounceFn } from '@vueuse/core'
 import { useCalculateCols, useLayout } from '../use'
 import Lazy from '../utils/Lazy'
+import type { LazyType } from '../types/lazy'
 import { getValue } from '../utils/util'
 import type { ViewCard } from '../types/waterfall'
 
@@ -111,7 +112,7 @@ export default defineComponent({
   },
 
   setup(props) {
-    const lazy = new Lazy(props.lazyload, props.loadProps, props.crossOrigin)
+    const lazy: LazyType = new Lazy(props.lazyload, props.loadProps, props.crossOrigin)
     provide('lazy', lazy)
 
     // 容器块信息

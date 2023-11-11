@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { defineComponent, inject, onMounted, onUnmounted, ref } from 'vue'
-import type Lazy from '../types/lazy'
+import type { LazyType } from '../types/lazy'
 import type { Nullable } from '../types/util'
 
 export default defineComponent({
@@ -27,7 +27,7 @@ export default defineComponent({
 
   setup(props, ctx) {
     const imgLoaded = inject('imgLoaded') as () => void
-    const lazy = inject('lazy') as Lazy
+    const lazy = inject('lazy') as LazyType
     const lazyRef = ref<Nullable<any>>(null)
 
     onMounted(() => {
