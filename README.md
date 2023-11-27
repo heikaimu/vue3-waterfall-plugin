@@ -77,7 +77,6 @@ data: {
 `animate__animated`样式
 ```css
 .animate__animated {
-  animation-duration: 1s;
   animation-fill-mode: both;
 }
 ```

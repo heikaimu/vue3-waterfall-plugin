@@ -7,7 +7,7 @@
 <template>
   <div class="lazy__box">
     <div class="lazy__resource">
-      <img ref="lazyRef" class="lazy__img" @load="imageLoad">
+      <img ref="lazyRef" class="lazy__img" :title="title" :alt="alt" @load="imageLoad">
     </div>
   </div>
 </template>
@@ -20,6 +20,14 @@ import type { Nullable } from '../types/util'
 export default defineComponent({
   props: {
     url: {
+      type: String,
+      default: '',
+    },
+    title: {
+      type: String,
+      default: '',
+    },
+    alt: {
       type: String,
       default: '',
     },

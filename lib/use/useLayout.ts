@@ -75,7 +75,8 @@ export function useLayout(props: WaterfallProps, colWidth: Ref<number>, cols: Re
       // 添加入场动画
       animation(curItem, () => {
         // 添加动画时间
-        if (transition) style[transition] = 'transform .3s'
+        const time = props.animationDuration / 1000
+        if (transition) style[transition] = `transform ${time}s`
       })
     }
 
