@@ -29,6 +29,7 @@ export interface WaterfallProps {
   gutter: number
   list: ViewCard[]
   animationPrefix: string
+  align: string
 }
 
 export interface ItemWidthProps {

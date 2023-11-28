@@ -21,6 +21,7 @@
       :lazyload="options.lazyload"
       :load-props="options.loadProps"
       :cross-origin="options.crossOrigin"
+      :align="options.align"
     >
       <template #item="{ item, url, index }">
         <div class="bg-gray-900 rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-linear hover:shadow-lg hover:shadow-gray-600 group" @click="handleClick(item)">

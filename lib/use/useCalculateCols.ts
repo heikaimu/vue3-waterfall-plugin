@@ -39,9 +39,21 @@ export function useCalculateCols(props: WaterfallProps) {
 
   // 偏移
   const offsetX = computed(() => {
-    const offset = props.hasAroundGutter ? props.gutter : -props.gutter
-    const contextWidth = cols.value * (colWidth.value + props.gutter) + offset
-    return (wrapperWidth.value - contextWidth) / 2
+    // 左对齐
+    if (props.align === 'left') {
+      return 0
+    }
+    else if (props.align === 'center') {
+      // 居中
+      const offset = props.hasAroundGutter ? props.gutter : -props.gutter
+      const contextWidth = cols.value * (colWidth.value + props.gutter) + offset
+      return (wrapperWidth.value - contextWidth) / 2
+    }
+    else {
+      const offset = props.hasAroundGutter ? props.gutter : -props.gutter
+      const contextWidth = cols.value * (colWidth.value + props.gutter) + offset
+      return (wrapperWidth.value - contextWidth)
+    }
   })
 
   return {

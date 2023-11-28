@@ -109,6 +109,10 @@ export default defineComponent({
       type: Number,
       default: 300,
     },
+    align: {
+      type: String,
+      default: 'center',
+    },
   },
 
   setup(props) {
@@ -192,7 +196,6 @@ export default defineComponent({
   position: absolute;
   left: 0;
   top: 0;
-  /* transition: .3s; */
   /* 初始位置设置到屏幕以外，避免懒加载失败 */
   transform: translate3d(0, 3000px, 0);
   visibility: hidden;

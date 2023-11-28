@@ -92,7 +92,7 @@ const options = reactive({
   // 动画效果
   animationEffect: 'animate__fadeInUp',
   // 动画时间
-  animationDuration: 4000,
+  animationDuration: 1000,
   // 动画延迟
   animationDelay: 300,
   // 背景色
@@ -106,6 +106,7 @@ const options = reactive({
   },
   // 是否懒加载
   lazyload: true,
+  align: 'right',
 })
 
 const dialogVisible = ref(false)
