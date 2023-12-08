@@ -6,7 +6,9 @@
 -->
 <template>
   <el-drawer v-model="drawer" size="50%" :with-header="false">
-    <WaterfallList :page-size="20" :options="options" />
+    <WaterfallList
+      :page-size="20" :options="options"
+    />
   </el-drawer>
 </template>
 
@@ -40,6 +42,6 @@ const drawer = computed({
 
 <style>
 .el-drawer__body {
-  padding: 0!important;
+  padding: 0 !important;
 }
 </style>

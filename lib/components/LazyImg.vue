@@ -111,6 +111,7 @@ export default defineComponent({
 .lazy__img[lazy="loaded"] {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .lazy__img[lazy="error"] {

@@ -103,6 +103,12 @@ const options = reactive({
   loadProps: {
     loading,
     error,
+    ratioCalculator: (width: number, height: number) => {
+      // 我设置了最小宽高比
+      const minRatio = 3 / 4
+      const maxRatio = 4 / 3
+      return Math.random() > 0.5 ? minRatio : maxRatio
+    },
   },
   // 是否懒加载
   lazyload: true,

@@ -69,7 +69,7 @@ data: {
 | `animationDuration` | `Number`  | `1000`        | 动画执行时间（单位毫秒）,该动画时间只影响卡片重拍的时间，一般情况都不用修改，如果想要修改飞入动画的执行时间，见下文|
 | `animationDelay`    | `Number`  | `300`         | 动画延迟（单位毫秒）|
 | `backgroundColor`   | `String`  | `#ffffff`     | 背景颜色 |
-| `loadProps`         | `Object`  | `loadProps`   | 加载的图片和失败的图片 |
+| `loadProps`         | `Object`  | `loadProps`   | 懒加载图片组件的属性设置，详情见下文《懒加载属性》 |
 | `lazyload`          | `Boolean` | `true`        | 是否开启懒加载 |
 | `crossOrigin`       | `Boolean` | `true`        | 图片加载是否开启跨域 |
 | `delay`             | `Number`  | `300`         | 布局刷新的防抖时间，默认 `300ms` 内没有再次触发才刷新布局。（图片加载完成；容器大小、`list`、`width`、`gutter`、`hasAroundGutter`变化时均会触发刷新） |
@@ -123,16 +123,34 @@ breakpoints: {
   },
 }
 ```
-#### 懒加载图片
-自定义懒加载等待图和失败图
+#### 懒加载属性
 ```javascript
 import loading from 'assets/loading.png'
 import error from 'assets/error.png'
 loadProps: {
   loading,
-  error
+  error,
+  ratioCalculator: (width, height) => {
+    // 我设置了最小宽高比
+    const minRatio = 3 / 4;
+    const maxRatio = 4 / 3;
+    // 获取当前图片的比例
+    const curRatio = width / height;
+    // 如果当前图片比列不在此范围内，我们取最小或者最大值
+    if (curRatio < minRatio) {
+      return minRatio;
+    } else if (curRatio > maxRatio) {
+      return maxRatio;
+    } else {
+      return curRatio;
+    }
+  }
 }
 ```
+1. `loading` 是图片加载时候的等待图
+2. `error` 是图片加载失败后的占位图
+3. `ratioCalculator` 是一个设置懒加载图片展示比列的方法，当我们不自定义的时候，懒加载最终出来的图比列就是图片本身，但是有时候我们的图片尺寸可能长宽比较极限，这样出来样式不太美观，我们都可以用这个方法按照我们的想法进行设置。
+
 
 自定义懒加载图片样式
 ```css
