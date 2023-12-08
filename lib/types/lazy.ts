@@ -13,6 +13,7 @@ export interface LazyOptions {
   loading?: string
   observerOptions?: IntersectionObserverInit
   log?: boolean
+  ratioCalculator?: (width: number, height: number) => number
 }
 
 export interface ValueFormatterObject {
