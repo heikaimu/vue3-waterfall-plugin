@@ -25,6 +25,7 @@ export default class Lazy {
     error: DEFAULT_ERROR,
     observerOptions: DEFAULT_OBSERVER_OPTIONS,
     log: true,
+    ratioCalculator: (width: number, height: number) => height / width,
   }
 
   _images = new WeakMap()
@@ -35,8 +36,9 @@ export default class Lazy {
     this.config(options)
   }
 
-  config(options = {}) {
+  config(options = {} as LazyOptions) {
     assign(this.options, options)
+    options.ratioCalculator && (this.options.ratioCalculator = options.ratioCalculator)
   }
 
   // mount
@@ -101,7 +103,7 @@ export default class Lazy {
       .then((image) => {
         // 修改容器
         const { width, height } = image
-        const ratio = height / width
+        const ratio = this.options.ratioCalculator?.(width, height) || height / width
         const lazyBox = el.parentNode!.parentNode as HTMLElement
         lazyBox.style.paddingBottom = `${ratio * 100}%`
 
