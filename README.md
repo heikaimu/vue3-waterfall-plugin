@@ -13,7 +13,9 @@ vue3 瀑布流插件，支持 PC 和移动端，支持 animate 的所有动画�
 
 [在线演示地址](https://heikaimu.github.io/vue3-waterfall-plugin/#/page-a)
 
-[vue2 版本](https://github.com/heikaimu/vue-waterfall-plugin)
+[vue2 版本(不再更新)](https://github.com/heikaimu/vue-waterfall-plugin)
+
+[卡片虚拟滚动(如果有需求的可以看下)](https://heikaimu.github.io/vue3-virtual-scroll/#/list)
 
 #### 安装
 
