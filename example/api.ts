@@ -98,6 +98,7 @@ export const getList = ({ page = 1, pageSize = 20 }) => {
           price: item.variants[0].price,
           src: {
             original: Math.random() > 0.1 ? item.images[0].src : 'https://www.example.com/non-existent-image.jpg',
+            // original: 'https://tq-alg-public.s3.us-west-2.amazonaws.com/kol/Seraphina_1702987997_0.png',
           },
           backgroundColor: randomColor(),
           name: item.title,

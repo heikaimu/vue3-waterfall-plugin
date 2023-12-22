@@ -9,25 +9,35 @@
 
 # Vue3 瀑布流组件
 
-vue3 瀑布流插件，支持 PC 和移动端，支持 animate 的所有动画效果，支持图片懒加载
+Vue3瀑布流插件支持PC和移动端，包含Animate的各种动画效果以及图片懒加载功能。
 
-[在线演示地址](https://heikaimu.github.io/vue3-waterfall-plugin/#/page-a)
+- [在线演示地址](https://heikaimu.github.io/vue3-waterfall-plugin/#/page-a)
+- [Vue2 版本(不再更新)](https://github.com/heikaimu/vue-waterfall-plugin)
+- [卡片虚拟滚动（有需求的可以查看）](https://heikaimu.github.io/vue3-virtual-scroll/#/list)
 
-[vue2 版本(不再更新)](https://github.com/heikaimu/vue-waterfall-plugin)
 
-[卡片虚拟滚动(如果有需求的可以看下)](https://heikaimu.github.io/vue3-virtual-scroll/#/list)
-
-#### 安装
+## 安装
 
 ```bash
 npm install vue-waterfall-plugin-next
 ```
 
-#### 使用
+## 使用
 
 ```javascript
 import { LazyImg, Waterfall } from 'vue-waterfall-plugin-next'
 import 'vue-waterfall-plugin-next/dist/style.css'
+
+// 数据
+data: {
+  list: [
+    {
+      src: "xxxx.jpg",
+      ...
+    }
+    ...
+  ]
+}
 ```
 
 ```html
@@ -41,22 +51,7 @@ import 'vue-waterfall-plugin-next/dist/style.css'
 </Waterfall>
 ```
 
-```javascript
-data: {
-  list: [
-    {
-      src: "xxxx.jpg",
-      ...
-    }
-    ...
-  ]
-}
-
-```
-作用域插槽返回了3个字段：
-`item` 原始数据, `url` 图片资源, `index` 卡片索引 
-
-#### `Props` 参数
+## `Props` 参数
 | 参数名              | 类型    | 默认值     | 描述                                                                               |
 | ----------------- | ------- | ----------- | ----------------------------------------------------------------------------------------- |
 | `list`              | `Array`   | []          | 列表数据 |
@@ -77,14 +72,14 @@ data: {
 | `delay`             | `Number`  | `300`         | 布局刷新的防抖时间，默认 `300ms` 内没有再次触发才刷新布局。（图片加载完成；容器大小、`list`、`width`、`gutter`、`hasAroundGutter`变化时均会触发刷新） |
 | `align`             | `String` | `center`       | 卡片的对齐方式，可选值为：`left`,`center`,`right` |
 
-#### `LazyImg` 方法
+## `LazyImg` 方法
 | 方法名字   | 返回值类型 | 描述 |
 | --------- | --------- | -------------- |
 | `load`    | `string`  | img标签的load函数 |
 | `success` | `string`  | 图片加载成功 |
 | `error`   | `string`  | 图片加载失败 |
 
-#### 使用插件
+## 强制更新
 ```html
 <Waterfall ref="waterfall"></Waterfall>
 
@@ -93,7 +88,7 @@ waterfall.value.renderer()
 ```
 `WaterFall`组件向外暴露了一个`renderer`函数，可以直接调用，该方法可以主动重绘列表，使用其他懒加载图片组件的回调函数里可以调用这个renderer来重绘。
 
-#### 动画样式
+## 动画样式
 想要使用动画必须引入`animate.css`或者定义一个动画`className`
 1. 如果引入了`animate.css`，并且版本是`4.x.x`及以上，可以不作任何处理
 2. 如果引入了`animate.css`，并且是老版本则需要将`animationPrefix`设置为`animated`
@@ -107,7 +102,7 @@ waterfall.value.renderer()
 `animation-duration` 决定了卡片的飞入动画执行时间！！！如果引入了`animate.css`并且想改变飞入动画的时间，则需要手动去修改`animation-duration`的值。
 
 
-#### 断点详细配置
+## 断点详细配置
 `breakpoints`默认值，当此属性生效时，width失效
 ```javascript
 breakpoints: {
@@ -125,7 +120,7 @@ breakpoints: {
   },
 }
 ```
-#### 懒加载属性
+## 懒加载属性
 ```javascript
 import loading from 'assets/loading.png'
 import error from 'assets/error.png'
