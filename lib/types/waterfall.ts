@@ -22,6 +22,7 @@ export type Breakpoints = Record<number, Point>
 export interface WaterfallProps {
   breakpoints: Breakpoints
   width: number
+  posDuration: number
   animationDuration: number
   animationDelay: number
   animationEffect: string

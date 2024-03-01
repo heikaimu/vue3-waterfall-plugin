@@ -112,7 +112,7 @@ const options = reactive({
   },
   // 是否懒加载
   lazyload: true,
-  align: 'right',
+  align: 'center',
 })
 
 const dialogVisible = ref(false)

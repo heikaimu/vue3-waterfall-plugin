@@ -35,52 +35,60 @@ export function useLayout(props: WaterfallProps, colWidth: Ref<number>, cols: Re
   const animation = addAnimation(props)
 
   // 排版
-  const layoutHandle = async() => {
+  const layoutHandle = async(): Promise<boolean> => {
+    return new Promise((resolve) => {
     // 初始化y集合
-    initY()
+      initY()
 
-    // 构造列表
-    const items: HTMLElement[] = []
-    if (waterfallWrapper && waterfallWrapper.value) {
-      waterfallWrapper.value.childNodes.forEach((el: any) => {
-        if (el!.className === 'waterfall-item')
-          items.push(el)
-      })
-    }
+      // 构造列表
+      const items: HTMLElement[] = []
+      if (waterfallWrapper && waterfallWrapper.value) {
+        waterfallWrapper.value.childNodes.forEach((el: any) => {
+          if (el!.className === 'waterfall-item')
+            items.push(el)
+        })
+      }
 
-    // 获取节点
-    if (items.length === 0) return false
+      // 获取节点
+      if (items.length === 0) return false
 
-    // 遍历节点
-    for (let i = 0; i < items.length; i++) {
-      const curItem = items[i] as HTMLElement
-      // 最小的y值
-      const minY = Math.min.apply(null, posY.value)
-      // 最小y的下标
-      const minYIndex = posY.value.indexOf(minY)
-      // 当前下标对应的x
-      const curX = getX(minYIndex)
+      // 遍历节点
+      for (let i = 0; i < items.length; i++) {
+        const curItem = items[i] as HTMLElement
+        // 最小的y值
+        const minY = Math.min.apply(null, posY.value)
+        // 最小y的下标
+        const minYIndex = posY.value.indexOf(minY)
+        // 当前下标对应的x
+        const curX = getX(minYIndex)
 
-      // 设置x,y,width
-      const style = curItem.style as CssStyleObject
+        // 设置x,y,width
+        const style = curItem.style as CssStyleObject
 
-      // 设置偏移
-      if (transform) style[transform] = `translate3d(${curX}px,${minY}px, 0)`
-      style.width = `${colWidth.value}px`
+        // 设置偏移
+        if (transform) style[transform] = `translate3d(${curX}px,${minY}px, 0)`
+        style.width = `${colWidth.value}px`
 
-      // 更新当前index的y值
-      const { height } = curItem.getBoundingClientRect()
-      posY.value[minYIndex] += height + props.gutter
+        style.visibility = 'visible'
 
-      // 添加入场动画
-      animation(curItem, () => {
+        // 更新当前index的y值
+        const { height } = curItem.getBoundingClientRect()
+        posY.value[minYIndex] += height + props.gutter
+
+        // 添加入场动画
+        animation(curItem, () => {
         // 添加动画时间
-        const time = props.animationDuration / 1000
-        if (transition) style[transition] = `transform ${time}s`
-      })
-    }
+          const time = props.posDuration / 1000
+          if (transition) style[transition] = `transform ${time}s`
+        })
+      }
 
-    wrapperHeight.value = Math.max.apply(null, posY.value)
+      wrapperHeight.value = Math.max.apply(null, posY.value)
+
+      setTimeout(() => {
+        resolve(true)
+      }, props.posDuration)
+    })
   }
 
   return {
@@ -97,7 +105,9 @@ function addAnimation(props: WaterfallProps) {
       const durationSec = `${props.animationDuration / 1000}s`
       const delaySec = `${props.animationDelay / 1000}s`
       const style = content.style as CssStyleObject
-      style.visibility = 'visible'
+      addClass(content, props.animationPrefix)
+      addClass(content, props.animationEffect)
+
       if (duration)
         style[duration] = durationSec
 
@@ -106,9 +116,6 @@ function addAnimation(props: WaterfallProps) {
 
       if (fillMode)
         style[fillMode] = 'both'
-
-      addClass(content, props.animationPrefix)
-      addClass(content, props.animationEffect)
 
       if (callback) {
         setTimeout(() => {

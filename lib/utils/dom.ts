@@ -31,11 +31,11 @@ const elementStyle = document.createElement('div').style as CssStyleObject
 
 const vendor = (() => {
   const transformNames: Record<string, string> = {
+    standard: 'transform',
     webkit: 'webkitTransform',
     Moz: 'MozTransform',
     O: 'OTransform',
     ms: 'msTransform',
-    standard: 'transform',
   }
 
   for (const key in transformNames) {

@@ -5,7 +5,7 @@
  * @FilePath: /vue3-waterfall/example/components/WaterfallList.vue
 -->
 <template>
-  <div style="width:100%">
+  <div v-loading="loading" style="min-height: 100%; width:100%">
     <Waterfall
       :list="list"
       :row-key="options.rowKey"
@@ -22,6 +22,7 @@
       :load-props="options.loadProps"
       :cross-origin="options.crossOrigin"
       :align="options.align"
+      @afterRender="afterRender"
     >
       <template #item="{ item, url, index }">
         <div class="bg-gray-900 rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-linear hover:shadow-lg hover:shadow-gray-600 group" @click="handleClick(item)">
@@ -47,7 +48,7 @@
       </template>
     </Waterfall>
 
-    <div class="flex justify-center py-10 bg-gray-900">
+    <div v-show="!loading" class="flex justify-center py-10 bg-gray-900">
       <button class="px-5 py-2 rounded-full bg-gray-700 text-md text-white cursor-pointer hover:bg-gray-800 transition-all duration-300" @click="handleLoadMore">
         加载更多
       </button>
@@ -84,6 +85,7 @@ const emits = defineEmits({
 // 列表
 const list = ref<ViewCard[]>([])
 const page = ref(1)
+const loading = ref(true)
 
 onMounted(() => {
   handleLoadMore()
@@ -118,7 +120,12 @@ function imageError(url: string) {
 }
 
 function imageSuccess(url: string) {
-  // console.log(`${url}: 加载成功`)
+  console.log(`${url}: 加载成功`)
+}
+
+function afterRender() {
+  loading.value = false
+  console.log('计算完成')
 }
 </script>
 

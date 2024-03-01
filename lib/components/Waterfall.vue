@@ -73,6 +73,10 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    posDuration: {
+      type: Number,
+      default: 300,
+    },
     animationPrefix: {
       type: String,
       default: 'animate__animated',
@@ -115,7 +119,7 @@ export default defineComponent({
     },
   },
 
-  setup(props) {
+  setup(props, ctx) {
     const lazy: LazyType = new Lazy(props.lazyload, props.loadProps, props.crossOrigin)
     provide('lazy', lazy)
 
@@ -139,7 +143,9 @@ export default defineComponent({
 
     // 1s内最多执行一次排版，减少性能开销
     const renderer = useDebounceFn(() => {
-      layoutHandle()
+      layoutHandle().then(() => {
+        ctx.emit('afterRender')
+      })
     }, props.delay)
 
     // 列表发生变化直接触发排版

@@ -61,16 +61,22 @@ data: {
 | `breakpoints`       | `Object`  | {<br>1200:{rowPerView:3},<br>800:{rowPerView:2},<br>500:{rowPerView:1}<br>} | 类似css的@media, 定义不同容器宽度下每行卡片个数，主要用于对移动端的适配 |
 | `gutter`            | `Number`  | `10`          | 卡片之间的间隙 |
 | `hasAroundGutter`   | `Boolean` | `true`        | 容器四周是否有 `gutter` 边距 |
+| `posDuration`       | `Number`  | `300`         | 卡片移动到正确位置的动画时间 |
 | `animationPrefix`   | `String`  | `animate__animated` | 详情见下文《动画样式》 |
 | `animationEffect`   | `String`  | `fadeIn`      | 卡片入场动画，默认只有 `fadeIn`，引入 `animation.css` 后可使用其他动画 |
-| `animationDuration` | `Number`  | `1000`        | 动画执行时间（单位毫秒）,该动画时间只影响卡片重拍的时间，一般情况都不用修改，如果想要修改飞入动画的执行时间，见下文|
-| `animationDelay`    | `Number`  | `300`         | 动画延迟（单位毫秒）|
+| `animationDuration` | `Number`  | `1000`        | 卡片入场动画执行时间（单位毫秒）,该动画时间只影响卡片重拍的时间，一般情况都不用修改，如果想要修改飞入动画的执行时间，见下文|
+| `animationDelay`    | `Number`  | `300`         | 卡片入场动画延迟（单位毫秒）|
 | `backgroundColor`   | `String`  | `#ffffff`     | 背景颜色 |
 | `loadProps`         | `Object`  | `loadProps`   | 懒加载图片组件的属性设置，详情见下文《懒加载属性》 |
 | `lazyload`          | `Boolean` | `true`        | 是否开启懒加载 |
 | `crossOrigin`       | `Boolean` | `true`        | 图片加载是否开启跨域 |
 | `delay`             | `Number`  | `300`         | 布局刷新的防抖时间，默认 `300ms` 内没有再次触发才刷新布局。（图片加载完成；容器大小、`list`、`width`、`gutter`、`hasAroundGutter`变化时均会触发刷新） |
 | `align`             | `String` | `center`       | 卡片的对齐方式，可选值为：`left`,`center`,`right` |
+
+## `WaterfallList` 方法
+| 方法名字   | 返回值类型 | 描述 |
+| --------- | --------- | -------------- |
+| `afterRender` |        | 本次卡片坐标计算完成并且移动到了对应位置（列表渲染的过程可能会多次触发，比如有一张图片加载完成就会重新计算位置） |
 
 ## `LazyImg` 方法
 | 方法名字   | 返回值类型 | 描述 |
@@ -89,6 +95,7 @@ waterfall.value.renderer()
 `WaterFall`组件向外暴露了一个`renderer`函数，可以直接调用，该方法可以主动重绘列表，使用其他懒加载图片组件的回调函数里可以调用这个renderer来重绘。
 
 ## 动画样式
+首先需要明白，这里的动画指的是数据插入时的动画，比如第一次加载数据已经加载更多的时候的一个插入动画。
 想要使用动画必须引入`animate.css`或者定义一个动画`className`
 1. 如果引入了`animate.css`，并且版本是`4.x.x`及以上，可以不作任何处理
 2. 如果引入了`animate.css`，并且是老版本则需要将`animationPrefix`设置为`animated`
