@@ -83,7 +83,7 @@ function randomColor() {
 //   return list
 // }
 
-const website = 'https://www.getphotoblanket.com'
+const website = 'https://wanderprints.com'
 // const website = 'https://www.getphotoblanket.com';
 
 export const getList = ({ page = 1, pageSize = 20 }) => {

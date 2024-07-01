@@ -6,7 +6,11 @@
 -->
 <template>
   <div v-loading="loading" style="min-height: 100%; width:100%">
+    <button @click="handleRender">
+      强制重绘
+    </button>
     <Waterfall
+      ref="waterfall"
       :list="list"
       :row-key="options.rowKey"
       :gutter="options.gutter"
@@ -59,9 +63,9 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
 import { onMounted, ref } from 'vue'
-import { LazyImg, Waterfall } from '../../lib/index'
-// import { LazyImg, Waterfall } from 'vue-waterfall-plugin-next'
-// import 'vue-waterfall-plugin-next/dist/style.css'
+// import { LazyImg, Waterfall } from '../../lib/index'
+import { LazyImg, Waterfall } from 'vue-waterfall-plugin-next'
+import 'vue-waterfall-plugin-next/dist/style.css'
 import type { ViewCard } from '../../lib/types/waterfall'
 import { getList } from '../api'
 
@@ -126,6 +130,11 @@ function imageSuccess(url: string) {
 function afterRender() {
   loading.value = false
   console.log('计算完成')
+}
+const waterfall = ref(null)
+function handleRender() {
+  waterfall.value.renderer()
+  // console.log(waterfall.value)
 }
 </script>
 

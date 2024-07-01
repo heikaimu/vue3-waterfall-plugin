@@ -20,13 +20,13 @@ specifiers:
   vue: 3.2.16
   vue-router: '4'
   vue-tsc: 0.33.2-patch.1
-  vue-waterfall-plugin-next: 2.2.5
+  vue-waterfall-plugin-next: 2.4.3
 
 dependencies:
   animate.css: 4.1.1
   element-plus: 2.1.4_h2twyz2hbfhsfeyihhmkiddtxu
   vue-router: 4.2.5_vue@3.2.16
-  vue-waterfall-plugin-next: 2.2.5_h2twyz2hbfhsfeyihhmkiddtxu
+  vue-waterfall-plugin-next: 2.4.3_h2twyz2hbfhsfeyihhmkiddtxu
 
 devDependencies:
   '@antfu/eslint-config': 0.18.8_tfpafavad6dwe253o5stfcfh4i
@@ -3965,36 +3965,12 @@ packages:
       typescript: 4.4.3
     dev: true
 
-  /vue-waterfall-plugin-next/2.2.0_h2twyz2hbfhsfeyihhmkiddtxu:
-    resolution: {integrity: sha512-rhrTdAlBnMWWt6737L+E08A7itgK3wHTy1NsSDgR9EPiBPuHYlth8jL2/hp2gIMAS4XUxJBtitfNUyK5qynkEA==}
-    dependencies:
-      animate.css: 4.1.1
-      element-plus: 2.1.4_h2twyz2hbfhsfeyihhmkiddtxu
-    transitivePeerDependencies:
-      - '@types/lodash-es'
-      - '@vue/composition-api'
-      - vue
-    dev: false
-
-  /vue-waterfall-plugin-next/2.2.4_h2twyz2hbfhsfeyihhmkiddtxu:
-    resolution: {integrity: sha512-7RaBxTe8bavQpRLnejcIYy5cCdtWIrfEsUSYBGbD8Sol2gSiOfmXGm92QdPUFzZdUGCbJrYGMxF5YzPTWC4iNg==}
-    dependencies:
-      animate.css: 4.1.1
-      element-plus: 2.1.4_h2twyz2hbfhsfeyihhmkiddtxu
-      vue-waterfall-plugin-next: 2.2.0_h2twyz2hbfhsfeyihhmkiddtxu
-    transitivePeerDependencies:
-      - '@types/lodash-es'
-      - '@vue/composition-api'
-      - vue
-    dev: false
-
-  /vue-waterfall-plugin-next/2.2.5_h2twyz2hbfhsfeyihhmkiddtxu:
-    resolution: {integrity: sha512-CVOjtmuYxilks/OWSlCDfWLDIurF1t0VMPXI5QRJ2A/To5XewxQvzGeRGl5nxSATwaUqknFZ740ySAbDNIrtow==}
+  /vue-waterfall-plugin-next/2.4.3_h2twyz2hbfhsfeyihhmkiddtxu:
+    resolution: {integrity: sha512-L2mH8wOn+ZuddPhaYHKljfukNM0iQd3vhjesvBK4ck+D5swS8c34VdlOED2w53QZvUrXQpEg9ASDHzLlLkzztg==}
     dependencies:
       animate.css: 4.1.1
       element-plus: 2.1.4_h2twyz2hbfhsfeyihhmkiddtxu
       vue-router: 4.2.5_vue@3.2.16
-      vue-waterfall-plugin-next: 2.2.4_h2twyz2hbfhsfeyihhmkiddtxu
     transitivePeerDependencies:
       - '@types/lodash-es'
       - '@vue/composition-api'
