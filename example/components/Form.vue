@@ -29,6 +29,9 @@
     <el-divider content-position="left">
       动画
     </el-divider>
+    <el-form-item label="animationCancel（取消动画）">
+      <el-switch v-model="config.animationCancel" />
+    </el-form-item>
     <el-form-item label="animationEffect">
       <el-select
         v-model="config.animationEffect"

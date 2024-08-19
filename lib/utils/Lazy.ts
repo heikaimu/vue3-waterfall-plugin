@@ -110,7 +110,7 @@ export default class Lazy {
         // 设置图片
         el.setAttribute('lazy', LifecycleEnum.LOADED)
         el.removeAttribute('src')
-        el.setAttribute('src', src)
+        el.src = image.src
 
         callback(true)
       })

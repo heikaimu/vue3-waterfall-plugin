@@ -1,6 +1,6 @@
 {
   "name": "vue-waterfall-plugin-next",
-  "version": "2.4.6",
+  "version": "2.5.1",
   "license": "UNLICENSED",
   "author": "Yaowen Liu <576079353@qq.com>",
   "main": "dist/my-lib.umd.js",
@@ -21,7 +21,7 @@
     "animate.css": "4.1.1",
     "element-plus": "2.1.4",
     "vue-router": "4",
-    "vue-waterfall-plugin-next": "2.4.3"
+    "vue-waterfall-plugin-next": "^2.5.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "0.18.8",

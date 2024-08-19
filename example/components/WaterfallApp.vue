@@ -95,6 +95,7 @@ const options = reactive({
   animationDuration: 1000,
   // 动画延迟
   animationDelay: 300,
+  animationCancel: false,
   // 背景色
   backgroundColor: '#2C2E3A',
   // imgSelector
