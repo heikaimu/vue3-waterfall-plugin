@@ -69,6 +69,7 @@ export function useLayout(props: WaterfallProps, colWidth: Ref<number>, cols: Re
         if (transform) style[transform] = `translate3d(${curX}px,${minY}px, 0)`
         style.width = `${colWidth.value}px`
 
+        // 隐藏
         style.visibility = 'visible'
 
         // 更新当前index的y值
@@ -76,11 +77,13 @@ export function useLayout(props: WaterfallProps, colWidth: Ref<number>, cols: Re
         posY.value[minYIndex] += height + props.gutter
 
         // 添加入场动画
-        animation(curItem, () => {
-        // 添加动画时间
-          const time = props.posDuration / 1000
-          if (transition) style[transition] = `transform ${time}s`
-        })
+        if (!props.animationCancel) {
+          animation(curItem, () => {
+            // 添加动画时间
+            const time = props.posDuration / 1000
+            if (transition) style[transition] = `transform ${time}s`
+          })
+        }
       }
 
       wrapperHeight.value = Math.max.apply(null, posY.value)

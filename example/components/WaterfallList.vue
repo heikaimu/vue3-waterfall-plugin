@@ -22,6 +22,7 @@
       :animation-effect="options.animationEffect"
       :animation-duration="options.animationDuration"
       :animation-delay="options.animationDelay"
+      :animation-cancel="true"
       :lazyload="options.lazyload"
       :load-props="options.loadProps"
       :cross-origin="options.crossOrigin"
@@ -63,9 +64,9 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
 import { onMounted, ref } from 'vue'
-// import { LazyImg, Waterfall } from '../../lib/index'
-import { LazyImg, Waterfall } from 'vue-waterfall-plugin-next'
-import 'vue-waterfall-plugin-next/dist/style.css'
+import { LazyImg, Waterfall } from '../../lib/index'
+// import { LazyImg, Waterfall } from 'vue-waterfall-plugin-next'
+// import 'vue-waterfall-plugin-next/dist/style.css'
 import type { ViewCard } from '../../lib/types/waterfall'
 import { getList } from '../api'
 

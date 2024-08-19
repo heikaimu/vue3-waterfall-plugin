@@ -66,6 +66,7 @@ data: {
 | `animationEffect`   | `String`  | `fadeIn`      | 卡片入场动画，默认只有 `fadeIn`，引入 `animation.css` 后可使用其他动画 |
 | `animationDuration` | `Number`  | `1000`        | 卡片入场动画执行时间（单位毫秒）,该动画时间只影响卡片重拍的时间，一般情况都不用修改，如果想要修改飞入动画的执行时间，见下文|
 | `animationDelay`    | `Number`  | `300`         | 卡片入场动画延迟（单位毫秒）|
+| `animationCancel`   | `Boolean` | `false`       | 取消动画，开启后，所有动画属性都不生效 |
 | `backgroundColor`   | `String`  | `#ffffff`     | 背景颜色 |
 | `loadProps`         | `Object`  | `loadProps`   | 懒加载图片组件的属性设置，详情见下文《懒加载属性》 |
 | `lazyload`          | `Boolean` | `true`        | 是否开启懒加载 |

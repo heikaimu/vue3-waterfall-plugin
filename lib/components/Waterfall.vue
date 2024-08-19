@@ -93,6 +93,10 @@ export default defineComponent({
       type: Number,
       default: 300,
     },
+    animationCancel: {
+      type: Boolean,
+      default: false,
+    },
     backgroundColor: {
       type: String,
       default: '#fff',

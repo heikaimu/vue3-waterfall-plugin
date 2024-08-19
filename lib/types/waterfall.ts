@@ -26,6 +26,7 @@ export interface WaterfallProps {
   animationDuration: number
   animationDelay: number
   animationEffect: string
+  animationCancel: boolean
   hasAroundGutter: boolean
   gutter: number
   list: ViewCard[]
