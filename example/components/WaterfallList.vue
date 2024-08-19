@@ -22,7 +22,6 @@
       :animation-effect="options.animationEffect"
       :animation-duration="options.animationDuration"
       :animation-delay="options.animationDelay"
-      :animation-cancel="true"
       :lazyload="options.lazyload"
       :load-props="options.loadProps"
       :cross-origin="options.crossOrigin"
@@ -79,7 +78,7 @@ const props = defineProps({
   },
   pageSize: {
     type: Number,
-    default: 100,
+    default: 10,
   },
 })
 
