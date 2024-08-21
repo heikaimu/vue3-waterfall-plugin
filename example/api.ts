@@ -6,7 +6,6 @@
  * @LastEditors: Yaowen Liu
  * @LastEditTime: 2023-09-21 09:23:25
  */
-// import type { ViewCard } from '../lib/types/waterfall'
 
 /**
  * 获取随机ID
@@ -56,32 +55,6 @@ function getRandomNum(min: number, max: number) {
 function randomColor() {
   return COLORS[getRandomNum(0, 4)]
 }
-
-// function randomName() {
-//   return NAMES[getRandomNum(0, 25)]
-// }
-
-// let start = 100
-// export function getList(pageSize = 10) {
-//   const end = start + pageSize
-//   const list: ViewCard[] = []
-//   for (let i = start; i <= end; i++) {
-//     const successURL = `https://api.mz-moe.cn/img/img${i}.jpg`
-//     // const successURL = `https://images.weserv.nl/?url=https://api.mz-moe.cn/img/img${i}.jpg?timestamp=${Date.now()}`
-//     const errorURL = 'https://api.mz-moe.cn/img/img00000.jpg'
-//     list.push({
-//       id: randomID(),
-//       star: false,
-//       src: {
-//         original: Math.random() < 0.95 ? successURL : errorURL,
-//       },
-//       backgroundColor: randomColor(),
-//       name: randomName(),
-//     })
-//   }
-//   start = end + 1
-//   return list
-// }
 
 const website = 'https://wanderprints.com'
 // const website = 'https://www.getphotoblanket.com';

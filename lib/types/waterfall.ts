@@ -4,14 +4,7 @@
  * @LastEditors: Yaowen Liu
  * @LastEditTime: 2022-03-23 14:44:20
  */
-export interface ViewCard {
-  src: any
-  id?: string
-  name?: string
-  star?: boolean
-  backgroundColor?: string
-  [attr: string]: any
-}
+export type ViewCard = Record<string, any>
 
 interface Point {
   rowPerView: number
