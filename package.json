@@ -1,6 +1,6 @@
 {
   "name": "vue-waterfall-plugin-next",
-  "version": "2.5.6",
+  "version": "2.5.7",
   "license": "UNLICENSED",
   "author": "Yaowen Liu <576079353@qq.com>",
   "main": "dist/my-lib.umd.js",
@@ -16,9 +16,6 @@
     "serve": "vite preview",
     "test": "vitest",
     "typecheck": "vue-tsc --noEmit"
-  },
-  "dependencies": {
-    "vue-waterfall-plugin-next": "^2.5.5"
   },
   "devDependencies": {
     "@antfu/eslint-config": "0.18.8",
