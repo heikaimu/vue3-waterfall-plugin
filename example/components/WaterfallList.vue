@@ -125,7 +125,7 @@ function imageError(url: string) {
 }
 
 function imageSuccess(url: string) {
-  console.log(`${url}: 加载成功`)
+  // console.log(`${url}: 加载成功`)
 }
 
 function afterRender() {

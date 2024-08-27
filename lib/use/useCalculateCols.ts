@@ -34,7 +34,8 @@ export function useCalculateCols(props: WaterfallProps) {
   // 列
   const cols = computed(() => {
     const offset = props.hasAroundGutter ? -props.gutter : props.gutter
-    return Math.round((wrapperWidth.value + offset) / (colWidth.value + props.gutter))
+    const val = (wrapperWidth.value + offset) / (colWidth.value + props.gutter)
+    return Math.floor(val)
   })
 
   // 偏移

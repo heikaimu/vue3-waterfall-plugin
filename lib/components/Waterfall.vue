@@ -185,6 +185,7 @@ export default defineComponent({
     }
 
     return {
+      colWidth,
       waterfallWrapper,
       wrapperHeight,
       getRenderURL,

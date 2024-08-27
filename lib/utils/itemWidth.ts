@@ -31,9 +31,12 @@ export const getItemWidth = ({ breakpoints, wrapperWidth, gutter, hasAroundGutte
     return initWidth
 
   // 断点模式，计算当前断点下的宽度
+  let breakWidth = 0
   const col = breakpoints[validSize]!.rowPerView
   if (hasAroundGutter)
-    return (wrapperWidth - gutter) / col - gutter
+    breakWidth = (wrapperWidth - gutter) / col - gutter
   else
-    return (wrapperWidth - (col - 1) * gutter) / col
+    breakWidth = (wrapperWidth - (col - 1) * gutter) / col
+
+  return Math.floor(breakWidth)
 }
