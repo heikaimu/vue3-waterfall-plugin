@@ -6,9 +6,6 @@
 -->
 <template>
   <div v-loading="loading" style="min-height: 100%; width:100%">
-    <button @click="handleRender">
-      强制重绘
-    </button>
     <Waterfall
       ref="waterfall"
       :list="list"
