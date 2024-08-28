@@ -12,7 +12,7 @@
       :lazyload="options.lazyload"
       :load-props="options.loadProps"
     >
-      <template #item="{ item, url }">
+      <template #default="{ item, url }">
         <div class="bg-gray-900 rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-linear hover:shadow-lg hover:shadow-gray-600 group">
           <div class="overflow-hidden">
             <LazyImg :url="url" class="cursor-pointer transition-all duration-300 ease-linear group-hover:scale-105" @load="imageLoad" @error="imageError" @success="imageSuccess" />

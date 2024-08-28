@@ -26,7 +26,7 @@
       :align="options.align"
       @afterRender="afterRender"
     >
-      <template #item="{ item, url, index }">
+      <template #default="{ item, url, index }">
         <div class="bg-gray-900 rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-linear hover:shadow-lg hover:shadow-gray-600 group" @click="handleClick(item)">
           <div class="overflow-hidden">
             <LazyImg :url="url" title="title" :alt="item.name" class="cursor-pointer transition-all duration-300 ease-linear group-hover:scale-105" @load="imageLoad" @error="imageError" @success="imageSuccess" />

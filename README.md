@@ -42,7 +42,10 @@ data: {
 
 ```html
 <Waterfall :list="list">
-  <template #item="{ item, url, index }">
+  <!-- v2.6.0之前版本插槽数据获取 -->
+  <!-- <template #item="{ item, url, index }"> -->
+  <!-- 新版插槽数据获取 -->
+  <template #default="{ item, url, index }">
     <div class="card">
       <LazyImg :url="url" />
       <p class="text">这是具体内容</p>
