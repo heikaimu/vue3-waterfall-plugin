@@ -4,6 +4,9 @@
       <router-link to="/page-a">
         基础API展示
       </router-link>
+      <router-link to="/page-c">
+        配合better-scroll实现滚动加载
+      </router-link>
       <router-link to="/page-b">
         数据分页展示
       </router-link>
