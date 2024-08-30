@@ -10,6 +10,9 @@
       <router-link to="/page-b">
         数据分页展示
       </router-link>
+      <router-link to="/page-d">
+        断点实现全屏幕铺满
+      </router-link>
     </nav>
 
     <router-view v-slot="{Component}">

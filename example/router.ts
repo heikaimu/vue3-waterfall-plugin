@@ -23,6 +23,11 @@ const router = createRouter({
       name: 'PageC',
       component: () => import('./components/PageC.vue'),
     },
+    {
+      path: '/page-d',
+      name: 'PageD',
+      component: () => import('./components/PageD.vue'),
+    },
   ],
 })
 
