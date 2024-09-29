@@ -13,6 +13,9 @@
       <router-link to="/page-d">
         断点实现全屏幕铺满
       </router-link>
+      <router-link to="/page-e">
+        tab切换多个列表保持状态
+      </router-link>
     </nav>
 
     <router-view v-slot="{Component}">

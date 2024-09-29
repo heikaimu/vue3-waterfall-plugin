@@ -28,6 +28,11 @@ const router = createRouter({
       name: 'PageD',
       component: () => import('./components/PageD.vue'),
     },
+    {
+      path: '/page-e',
+      name: 'PageE',
+      component: () => import('./components/PageE.vue'),
+    },
   ],
 })
 
