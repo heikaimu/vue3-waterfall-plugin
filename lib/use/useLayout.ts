@@ -66,7 +66,7 @@ export function useLayout(props: WaterfallProps, colWidth: Ref<number>, cols: Re
         const style = curItem.style as CssStyleObject
 
         // 设置偏移
-        if (transform) style[transform] = `translate3d(${curX}px,${minY}px, 0)`
+        if (transform) style[transform] = `translate3d(${Math.floor(curX)}px,${Math.floor(minY)}px, 0)`
         style.width = `${colWidth.value}px`
 
         // 隐藏
