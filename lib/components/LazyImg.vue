@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, onMounted, onUnmounted, ref } from 'vue'
+import { defineComponent, inject, onMounted, onUnmounted, ref, watch } from 'vue'
 import type { LazyType } from '../types/lazy'
 import type { Nullable } from '../types/util'
 
@@ -44,6 +44,11 @@ export default defineComponent({
 
     onUnmounted(() => {
       unRender()
+    })
+
+    // 使用 watch 监听 url的 变化
+    watch(() => props.url, (newValue, oldValue) => {
+      render()
     })
 
     function render() {

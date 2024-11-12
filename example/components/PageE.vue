@@ -10,6 +10,7 @@
         <div v-show="activeIndex === index" class="tab-page-box">
           <WaterfallList
             :page-size="20" :options="options"
+            @cardClick="cardClick"
           />
         </div>
       </div>
@@ -27,6 +28,10 @@ const activeIndex = ref(0)
 const list = ['1', '2', '3']
 function handleTab(index) {
   activeIndex.value = index
+}
+
+function cardClick(item) {
+  item.src.original = 'https://img.fantaskycdn.com/778167a96b00b38c2a1f91fad85c071e_420x.webp'
 }
 
 const options = reactive({
