@@ -15,6 +15,7 @@
     >
       <div class="waterfall-card">
         <slot :item="item" :index="index" :url="getRenderURL(item)" />
+        <slot name="item" :item="item" :index="index" :url="getRenderURL(item)" />
       </div>
     </div>
   </div>
