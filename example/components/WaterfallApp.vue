@@ -114,6 +114,7 @@ const options = reactive({
   // 是否懒加载
   lazyload: true,
   align: 'center',
+  horizontalOrder: false,
 })
 
 const dialogVisible = ref(false)

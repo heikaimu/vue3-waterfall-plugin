@@ -122,6 +122,10 @@ export default defineComponent({
       type: String,
       default: 'center',
     },
+    horizontalOrder: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   setup(props, ctx) {
@@ -144,6 +148,7 @@ export default defineComponent({
       cols,
       offsetX,
       waterfallWrapper,
+      props.horizontalOrder,
     )
 
     // 1s内最多执行一次排版，减少性能开销

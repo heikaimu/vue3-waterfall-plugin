@@ -24,6 +24,7 @@
       :load-props="options.loadProps"
       :cross-origin="options.crossOrigin"
       :align="options.align"
+      :horizontal-order="options.horizontalOrder"
       @afterRender="afterRender"
     >
       <template #default="{ item, url, index }">
@@ -33,7 +34,7 @@
           </div>
           <div class="px-4 pt-2 pb-4 border-t border-t-gray-800">
             <h2 class="pb-4 text-gray-50 group-hover:text-yellow-300">
-              {{ item.name }}
+              {{ item.name }} ({{ index }})
             </h2>
             <div class="pt-3 flex justify-between items-center border-t border-t-gray-600 border-opacity-50">
               <div class="text-gray-50">

@@ -16,7 +16,7 @@ const delay = prefixStyle('animation-delay')
 const transition = prefixStyle('transition')
 const fillMode = prefixStyle('animation-fill-mode')
 
-export function useLayout(props: WaterfallProps, colWidth: Ref<number>, cols: Ref<number>, offsetX: Ref<number>, waterfallWrapper: Ref<Nullable<HTMLElement>>) {
+export function useLayout(props: WaterfallProps, colWidth: Ref<number>, cols: Ref<number>, offsetX: Ref<number>, waterfallWrapper: Ref<Nullable<HTMLElement>>, horizontalOrder: Boolean) {
   const posY = ref<number[]>([])
   const wrapperHeight = ref(0)
 
@@ -55,12 +55,20 @@ export function useLayout(props: WaterfallProps, colWidth: Ref<number>, cols: Re
       // 遍历节点
       for (let i = 0; i < items.length; i++) {
         const curItem = items[i] as HTMLElement
+
         // 最小的y值
-        const minY = Math.min.apply(null, posY.value)
+        let minY = Math.min.apply(null, posY.value)
         // 最小y的下标
-        const minYIndex = posY.value.indexOf(minY)
+        let yIndex = posY.value.indexOf(minY)
+
+        // 如果配置了从左到右
+        if (horizontalOrder) {
+          yIndex = i % cols.value
+          minY = posY.value[yIndex]
+        }
+
         // 当前下标对应的x
-        const curX = getX(minYIndex)
+        const curX = getX(yIndex)
 
         // 设置x,y,width
         const style = curItem.style as CssStyleObject
@@ -74,7 +82,7 @@ export function useLayout(props: WaterfallProps, colWidth: Ref<number>, cols: Re
 
         // 更新当前index的y值
         const { height } = curItem.getBoundingClientRect()
-        posY.value[minYIndex] += height + props.gutter
+        posY.value[yIndex] += height + props.gutter
 
         // 添加入场动画
         if (!props.animationCancel) {
