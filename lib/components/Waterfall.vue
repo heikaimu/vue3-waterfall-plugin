@@ -126,6 +126,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    heightDifference: {
+      type: Number,
+      default: 0,
+    },
   },
 
   setup(props, ctx) {
@@ -149,6 +153,7 @@ export default defineComponent({
       offsetX,
       waterfallWrapper,
       props.horizontalOrder,
+      props.heightDifference,
     )
 
     // 1s内最多执行一次排版，减少性能开销

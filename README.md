@@ -77,6 +77,7 @@ data: {
 | `delay`             | `Number`  | `300`         | 布局刷新的防抖时间，默认 `300ms` 内没有再次触发才刷新布局。（图片加载完成；容器大小、`list`、`width`、`gutter`、`hasAroundGutter`变化时均会触发刷新） |
 | `align`             | `String` | `center`       | 卡片的对齐方式，可选值为：`left`,`center`,`right` |
 | `horizontalOrder`   | `Boolean` | `false`       | 卡片是否按照从左到右的顺序排列，默认情况是，那里高度最低排哪里 |
+| `heightDifference`  | `Number` | `0`           | 在horizontalOrder为false的情况下，在高度差距距离最小值10以内，取index最小的列作为下一个卡片的列 |
 
 
 ## `WaterfallList` 方法

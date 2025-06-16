@@ -1,6 +1,6 @@
 {
   "name": "vue-waterfall-plugin-next",
-  "version": "2.6.6",
+  "version": "2.6.7",
   "license": "UNLICENSED",
   "author": "Yaowen Liu <576079353@qq.com>",
   "main": "dist/my-lib.umd.js",

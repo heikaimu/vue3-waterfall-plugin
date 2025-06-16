@@ -16,7 +16,15 @@ const delay = prefixStyle('animation-delay')
 const transition = prefixStyle('transition')
 const fillMode = prefixStyle('animation-fill-mode')
 
-export function useLayout(props: WaterfallProps, colWidth: Ref<number>, cols: Ref<number>, offsetX: Ref<number>, waterfallWrapper: Ref<Nullable<HTMLElement>>, horizontalOrder: Boolean) {
+export function useLayout(
+  props: WaterfallProps,
+  colWidth: Ref<number>,
+  cols: Ref<number>,
+  offsetX: Ref<number>,
+  waterfallWrapper: Ref<Nullable<HTMLElement>>,
+  horizontalOrder: Boolean,
+  heightDifference: number,
+) {
   const posY = ref<number[]>([])
   const wrapperHeight = ref(0)
 
@@ -57,9 +65,11 @@ export function useLayout(props: WaterfallProps, colWidth: Ref<number>, cols: Re
         const curItem = items[i] as HTMLElement
 
         // 最小的y值
-        let minY = Math.min.apply(null, posY.value)
+        let yIndex = findIndexWithinHeightDifference(posY.value, heightDifference)
+        let minY = posY.value[yIndex]
+        // let minY = Math.min.apply(null, posY.value)
         // 最小y的下标
-        let yIndex = posY.value.indexOf(minY)
+        // let yIndex = posY.value.indexOf(minY)
 
         // 如果配置了从左到右
         if (horizontalOrder) {
@@ -106,6 +116,25 @@ export function useLayout(props: WaterfallProps, colWidth: Ref<number>, cols: Re
     wrapperHeight,
     layoutHandle,
   }
+}
+
+// 获取误差范围内的最小Y
+function findIndexWithinHeightDifference(arr: number[], heightDifference: number): number {
+  if (arr.length === 0) return -1
+
+  const minValue = Math.min(...arr)
+  const upperLimit = minValue + heightDifference
+
+  let resultIndex = -1
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] >= minValue && arr[i] <= upperLimit) {
+      resultIndex = i
+      break // 找到第一个符合范围的直接返回
+    }
+  }
+
+  return resultIndex
 }
 
 // 动画
