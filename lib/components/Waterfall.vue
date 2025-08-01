@@ -70,6 +70,10 @@ export default defineComponent({
       type: Number,
       default: 10,
     },
+    space: {
+      type: Number,
+      default: null,
+    },
     hasAroundGutter: {
       type: Boolean,
       default: true,

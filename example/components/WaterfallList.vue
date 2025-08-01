@@ -11,6 +11,7 @@
       :list="list"
       :row-key="options.rowKey"
       :gutter="options.gutter"
+      :space="options.space"
       :has-around-gutter="options.hasAroundGutter"
       :width="options.width"
       :breakpoints="options.breakpoints"

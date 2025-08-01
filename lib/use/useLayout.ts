@@ -36,7 +36,8 @@ export function useLayout(
 
   // 初始y
   const initY = (): void => {
-    posY.value = new Array(cols.value).fill(props.hasAroundGutter ? props.gutter : 0)
+    const curSpace = props.space || props.gutter
+    posY.value = new Array(cols.value).fill(props.hasAroundGutter ? curSpace : 0)
   }
 
   // 添加入场动画
@@ -92,7 +93,8 @@ export function useLayout(
 
         // 更新当前index的y值
         const { height } = curItem.getBoundingClientRect()
-        posY.value[yIndex] += height + props.gutter
+        const curSpace = props.space || props.gutter
+        posY.value[yIndex] += height + curSpace
 
         // 添加入场动画
         if (!props.animationCancel) {

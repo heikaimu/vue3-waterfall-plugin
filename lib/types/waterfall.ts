@@ -22,6 +22,7 @@ export interface WaterfallProps {
   animationCancel: boolean
   hasAroundGutter: boolean
   gutter: number
+  space: number
   list: ViewCard[]
   animationPrefix: string
   align: string

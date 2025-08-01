@@ -63,6 +63,7 @@ data: {
 | `width`             | `Number`  | `200`         | 卡片在 PC 上的宽度, 与breakpoints一样可以确定卡片的宽度以及每行个数, 但**breakpoints优先级高于width** |
 | `breakpoints`       | `Object`  | {<br>1200:{rowPerView:3},<br>800:{rowPerView:2},<br>500:{rowPerView:1}<br>} | 类似css的@media, 定义不同容器宽度下每行卡片个数，主要用于对移动端的适配 |
 | `gutter`            | `Number`  | `10`          | 卡片之间的间隙 |
+| `space`             | `Number`  | `10`          | 这是行间隙，如果不设置他，列和行都会用gutter |
 | `hasAroundGutter`   | `Boolean` | `true`        | 容器四周是否有 `gutter` 边距 |
 | `posDuration`       | `Number`  | `300`         | 卡片移动到正确位置的动画时间 |
 | `animationPrefix`   | `String`  | `animate__animated` | 详情见下文《动画样式》 |
