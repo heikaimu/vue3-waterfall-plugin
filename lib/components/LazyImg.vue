@@ -5,7 +5,7 @@
  * @LastEditTime: 2023-09-21 09:24:00
 -->
 <template>
-  <div class="lazy__box">
+  <div class="lazy__box" :style="{paddingBottom:`${ratio * 100}%`}">
     <div class="lazy__resource">
       <img ref="lazyRef" class="lazy__img" :title="title" :alt="alt" @load="imageLoad">
     </div>
@@ -30,6 +30,10 @@ export default defineComponent({
     alt: {
       type: String,
       default: '',
+    },
+    ratio: {
+      type: Number,
+      default: 1,
     },
   },
 
@@ -86,8 +90,6 @@ export default defineComponent({
 <style scoped>
 .lazy__box {
   width: 100%;
-  height: 0;
-  padding-bottom: 100%;
   overflow: hidden;
   position: relative;
 }
