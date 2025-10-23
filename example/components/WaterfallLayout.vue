@@ -34,15 +34,13 @@
 .page-nav {
   position: fixed;
   left: 0;
-  top: 10px;
+  top: 0;
   z-index: 99;
   padding: 8px;
   padding-right: 30px;
   background-color: #222222;
-  border-radius: 0 100px 100px 0;
   border-right: 2px solid #fff;
   border-bottom: 2px solid #fff;
-  border-top: 2px solid #fff;
 }
 
 .page-nav a {

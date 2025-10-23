@@ -53,9 +53,9 @@
     </Waterfall>
 
     <div v-show="!loading" class="flex justify-center py-10 bg-gray-900">
-      <button class="px-5 py-2 rounded-full bg-gray-700 text-md text-white cursor-pointer hover:bg-gray-800 transition-all duration-300" @click="handleLoadMore">
+      <el-button :loading="loadList" class="px-5 py-2 rounded-full bg-gray-700 text-md text-white cursor-pointer hover:bg-gray-800 transition-all duration-300" @click="handleLoadMore">
         加载更多
-      </button>
+      </el-button>
     </div>
   </div>
 </template>
@@ -90,20 +90,22 @@ const emits = defineEmits({
 const list = ref<ViewCard[]>([])
 const page = ref(1)
 const loading = ref(true)
+const loadList = ref(false)
 
 onMounted(() => {
   handleLoadMore()
 })
 
 // 加载更多
-function handleLoadMore() {
-  getList({
+async function handleLoadMore() {
+  loadList.value = true
+  const res = await getList({
     page: page.value,
     pageSize: props.pageSize,
-  }).then((res) => {
-    list.value.push(...res)
-    page.value += 1
   })
+  loadList.value = false
+  list.value.push(...res)
+  page.value += 1
 }
 
 // 删除
@@ -129,7 +131,6 @@ function imageSuccess(url: string) {
 
 function afterRender() {
   loading.value = false
-  console.log('计算完成')
 }
 const waterfall = ref(null)
 function handleRender() {

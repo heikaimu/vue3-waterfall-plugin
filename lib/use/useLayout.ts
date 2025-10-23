@@ -2,7 +2,7 @@
  * @Author: Yaowen Liu
  * @Date: 2022-03-08 15:04:02
  * @LastEditors: Yaowen Liu
- * @LastEditTime: 2023-03-01 16:38:44
+ * @LastEditTime: 2025-10-22
  */
 import type { Ref } from 'vue'
 import { ref } from 'vue'
@@ -40,77 +40,89 @@ export function useLayout(
     posY.value = new Array(cols.value).fill(props.hasAroundGutter ? curSpace : 0)
   }
 
-  // 添加入场动画
-  const animation = addAnimation(props)
+  // 添加动画逻辑
+  const addEnterAnimation = (el: HTMLElement) => {
+    const content = el.firstChild as HTMLElement
+    if (content && !hasClass(content, props.animationPrefix)) {
+      const styleC = content.style as CssStyleObject
+      addClass(content, props.animationPrefix)
+      addClass(content, props.animationEffect)
+      if (duration) styleC[duration] = `${props.animationDuration / 1000}s`
+      if (delay) styleC[delay] = `${props.animationDelay / 1000}s`
+      if (fillMode) styleC[fillMode] = 'both'
+    }
+  }
 
-  // 排版
-  const layoutHandle = async(): Promise<boolean> => {
-    return new Promise((resolve) => {
-    // 初始化y集合
-      initY()
+  // 🧩 主逻辑：带 isFix 参数
+  const layoutHandle = async(isFix = false): Promise<boolean> => {
+    if (!waterfallWrapper.value) return false
 
-      // 构造列表
-      const items: HTMLElement[] = []
-      if (waterfallWrapper && waterfallWrapper.value) {
-        waterfallWrapper.value.childNodes.forEach((el: any) => {
-          if (el!.className === 'waterfall-item')
-            items.push(el)
-        })
-      }
+    // 初始化每列的 y 值
+    initY()
 
-      // 获取节点
-      if (items.length === 0) return false
+    // 获取元素
+    const wrapper = waterfallWrapper.value
+    const items: HTMLElement[] = []
+    wrapper.childNodes.forEach((el: any) => {
+      if (el?.nodeType === 1 && el.classList?.contains('waterfall-item'))
+        items.push(el)
+    })
+    if (items.length === 0) return false
 
-      // 遍历节点
-      for (let i = 0; i < items.length; i++) {
-        const curItem = items[i] as HTMLElement
+    // 先读取所有高度
+    const heights = items.map(el => el.offsetHeight || el.getBoundingClientRect().height)
+    const time = props.posDuration / 1000
 
-        // 最小的y值
-        let yIndex = findIndexWithinHeightDifference(posY.value, heightDifference)
-        let minY = posY.value[yIndex]
-        // let minY = Math.min.apply(null, posY.value)
-        // 最小y的下标
-        // let yIndex = posY.value.indexOf(minY)
+    // 计算布局写入任务
+    const writes: Array<() => void> = []
+    for (let i = 0; i < items.length; i++) {
+      const yIndex = horizontalOrder
+        ? i % cols.value
+        : findIndexWithinHeightDifference(posY.value, heightDifference)
+      const minY = posY.value[yIndex]
+      const curX = getX(yIndex)
+      const h = heights[i]
+      const curItem = items[i]
 
-        // 如果配置了从左到右
-        if (horizontalOrder) {
-          yIndex = i % cols.value
-          minY = posY.value[yIndex]
-        }
-
-        // 当前下标对应的x
-        const curX = getX(yIndex)
-
-        // 设置x,y,width
+      writes.push(() => {
         const style = curItem.style as CssStyleObject
-
-        // 设置偏移
-        if (transform) style[transform] = `translate3d(${Math.floor(curX)}px,${Math.floor(minY)}px, 0)`
+        if (transform)
+          style[transform] = `translate3d(${Math.floor(curX)}px,${Math.floor(minY)}px,0)`
         style.width = `${colWidth.value}px`
-
-        // 隐藏
         style.visibility = 'visible'
 
-        // 更新当前index的y值
-        const { height } = curItem.getBoundingClientRect()
-        const curSpace = props.space || props.gutter
-        posY.value[yIndex] += height + curSpace
+        // 🟢 非修正布局时添加入场动画
+        if (!isFix && !props.animationCancel)
+          addEnterAnimation(curItem)
+      })
 
-        // 添加入场动画
-        if (!props.animationCancel) {
-          animation(curItem, () => {
-            // 添加动画时间
-            const time = props.posDuration / 1000
+      const curSpace = props.space || props.gutter
+      posY.value[yIndex] += h + curSpace
+    }
+
+    // 更新容器高度
+    wrapperHeight.value = Math.max(...posY.value)
+
+    // 🟢 如果是修正模式：直接同步执行写入，不再延迟或动画
+    if (isFix) {
+      writes.forEach(fn => fn())
+      return true
+    }
+
+    // 🟢 正常布局：分帧执行，带动画
+    return new Promise((resolve) => {
+      requestAnimationFrame(() => {
+        writes.forEach(fn => fn())
+
+        // 第二帧：加动画过渡
+        requestAnimationFrame(() => {
+          for (const el of items) {
+            const style = el.style as CssStyleObject
             if (transition) style[transition] = `transform ${time}s`
-          })
-        }
-      }
-
-      wrapperHeight.value = Math.max.apply(null, posY.value)
-
-      setTimeout(() => {
-        resolve(true)
-      }, props.posDuration)
+          }
+          setTimeout(() => resolve(true), props.posDuration)
+        })
+      })
     })
   }
 
@@ -123,47 +135,14 @@ export function useLayout(
 // 获取误差范围内的最小Y
 function findIndexWithinHeightDifference(arr: number[], heightDifference: number): number {
   if (arr.length === 0) return -1
-
   const minValue = Math.min(...arr)
   const upperLimit = minValue + heightDifference
-
   let resultIndex = -1
-
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] >= minValue && arr[i] <= upperLimit) {
       resultIndex = i
-      break // 找到第一个符合范围的直接返回
+      break
     }
   }
-
   return resultIndex
-}
-
-// 动画
-function addAnimation(props: WaterfallProps) {
-  return (item: HTMLElement, callback?: () => void) => {
-    const content = item!.firstChild as HTMLElement
-    if (content && !hasClass(content, props.animationPrefix)) {
-      const durationSec = `${props.animationDuration / 1000}s`
-      const delaySec = `${props.animationDelay / 1000}s`
-      const style = content.style as CssStyleObject
-      addClass(content, props.animationPrefix)
-      addClass(content, props.animationEffect)
-
-      if (duration)
-        style[duration] = durationSec
-
-      if (delay)
-        style[delay] = delaySec
-
-      if (fillMode)
-        style[fillMode] = 'both'
-
-      if (callback) {
-        setTimeout(() => {
-          callback()
-        }, props.animationDuration + props.animationDelay)
-      }
-    }
-  }
 }

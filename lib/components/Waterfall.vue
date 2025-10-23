@@ -160,16 +160,21 @@ export default defineComponent({
       props.heightDifference,
     )
 
-    // 1s内最多执行一次排版，减少性能开销
+    // 用单层防抖包住全部逻辑
     const renderer = useDebounceFn(() => {
-      layoutHandle().then(() => {
-        ctx.emit('afterRender')
+      // 等一帧，让浏览器先应用新的 colWidth / wrapperWidth
+      requestAnimationFrame(() => {
+        layoutHandle().then(() => ctx.emit('afterRender'))
+        // 🟢 关键：延时再执行一次修正布局
+        setTimeout(() => {
+          layoutHandle()
+        }, props.posDuration + 50) // 延迟略大于动画时间
       })
     }, props.delay)
 
-    // 列表发生变化直接触发排版
+    // 监听 wrapperWidth、colWidth、list
     watch(
-      () => [wrapperWidth, colWidth, props.list],
+      () => [wrapperWidth.value, colWidth.value, props.list],
       () => {
         if (wrapperWidth.value > 0) renderer()
       },
@@ -178,11 +183,6 @@ export default defineComponent({
 
     // 尺寸宽度变化防抖触发
     const sizeChangeTime = ref(0)
-
-    // watchDebounced(colWidth, () => {
-    //   layoutHandle()
-    //   sizeChangeTime.value += 1
-    // }, { debounce: props.delay })
 
     provide('sizeChangeTime', sizeChangeTime)
 
