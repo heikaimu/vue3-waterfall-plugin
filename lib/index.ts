@@ -1,3 +1,4 @@
 import Waterfall from './components/Waterfall.vue'
 import LazyImg from './components/LazyImg.vue'
-export { Waterfall, LazyImg }
+import WaterfallVirtual from './components/WaterfallVirtual.vue'
+export { WaterfallVirtual, Waterfall, LazyImg }

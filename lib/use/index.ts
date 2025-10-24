@@ -6,3 +6,4 @@
  */
 export { useCalculateCols } from './useCalculateCols'
 export { useLayout } from './useLayout'
+export { useLayoutVirtual } from './useLayoutVirtual'
