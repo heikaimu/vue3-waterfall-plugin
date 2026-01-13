@@ -9,8 +9,8 @@
 </template>
 
 <script setup lang="ts">
-// import WaterfallLayout from './components/WaterfallLayout.vue'
-import WaterfallLayout from './components/WaterfallVirtualList.vue'
+import WaterfallLayout from './components/WaterfallLayout.vue'
+// import WaterfallLayout from './components/WaterfallVirtualList.vue'
 </script>
 
 <style>

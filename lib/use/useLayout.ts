@@ -67,7 +67,10 @@ export function useLayout(
       if (el?.nodeType === 1 && el.classList?.contains('waterfall-item'))
         items.push(el)
     })
-    if (items.length === 0) return false
+    if (items.length === 0) {
+      wrapperHeight.value = 0
+      return false
+    }
 
     // 先读取所有高度
     const heights = items.map(el => el.offsetHeight || el.getBoundingClientRect().height)

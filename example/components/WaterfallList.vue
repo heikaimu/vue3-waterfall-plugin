@@ -56,6 +56,9 @@
       <el-button :loading="loadList" class="px-5 py-2 rounded-full bg-gray-700 text-md text-white cursor-pointer hover:bg-gray-800 transition-all duration-300" @click="handleLoadMore">
         加载更多
       </el-button>
+      <el-button type="danger" @click="handleClearList">
+        清空
+      </el-button>
     </div>
   </div>
 </template>
@@ -106,6 +109,10 @@ async function handleLoadMore() {
   loadList.value = false
   list.value.push(...res)
   page.value += 1
+}
+
+function handleClearList() {
+  list.value = []
 }
 
 // 删除
